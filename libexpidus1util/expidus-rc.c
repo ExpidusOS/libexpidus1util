@@ -25,13 +25,13 @@
  * @short_description: functions for reading and writing resource config files.
  *
  * Provides support for parsing INI-style resource config files like used by for
- * example KDE and some Xfce components (like xfwm4, who uses rc files for the
+ * example KDE and some Expidus components (like xfwm4, who uses rc files for the
  * themes).
  *
  * The parser itself is optimized for high-performance using memory and string chunks
  * to reduce the time spent looking for heap memory (a nice side effect of this is the
- * reduced heap corruption). But due to this fact, an #XfceRc object might consume quite
- * a lot of memory after some time of usage. Therefore you should close an #XfceRc object
+ * reduced heap corruption). But due to this fact, an #ExpidusRc object might consume quite
+ * a lot of memory after some time of usage. Therefore you should close an #ExpidusRc object
  * as soon as possible after loading configuration data from the object.
  */
 
@@ -65,27 +65,27 @@
 #include <libexpidus1util/expidus-rc-private.h>
 #include <libexpidus1util/libexpidus1util-alias.h>
 
-static XfceRc *
-expidus_rc_copy (const XfceRc *rc)
+static ExpidusRc *
+expidus_rc_copy (const ExpidusRc *rc)
 {
-  return g_slice_dup (XfceRc, rc);
+  return g_slice_dup (ExpidusRc, rc);
 }
 
 static void
-expidus_rc_free (XfceRc *rc)
+expidus_rc_free (ExpidusRc *rc)
 {
   if (G_LIKELY (rc != NULL))
     {
-      g_slice_free (XfceRc, rc);
+      g_slice_free (ExpidusRc, rc);
     }
 }
 
-G_DEFINE_BOXED_TYPE (XfceRc, expidus_rc,
+G_DEFINE_BOXED_TYPE (ExpidusRc, expidus_rc,
   expidus_rc_copy, expidus_rc_free)
 
 /* called by _expidus_rc_{simple,config}_new */
 void
-_expidus_rc_init (XfceRc *rc)
+_expidus_rc_init (ExpidusRc *rc)
 {
 #ifdef HAVE_SETLOCALE
   gchar *locale;
@@ -122,15 +122,15 @@ _expidus_rc_init (XfceRc *rc)
  * does not exists. In this case you'll start with a fresh config, which contains
  * only the default group and no entries.
  *
- * Return value: (transfer full): the newly created #XfceRc object, or %NULL on error.
+ * Return value: (transfer full): the newly created #ExpidusRc object, or %NULL on error.
  *
  * Since: 4.2
  **/
-XfceRc*
+ExpidusRc*
 expidus_rc_simple_open (const gchar *filename,
                      gboolean     readonly)
 {
-  XfceRcSimple *simple;
+  ExpidusRcSimple *simple;
   gboolean      exists;
 
   exists = g_file_test (filename, G_FILE_TEST_IS_REGULAR);
@@ -166,16 +166,16 @@ expidus_rc_simple_open (const gchar *filename,
  * does not exists. In this case you'll start with a fresh config, which contains
  * only the default group and no entries.
  *
- * Return value: (transfer full): the newly created #XfceRc object, or %NULL on error.
+ * Return value: (transfer full): the newly created #ExpidusRc object, or %NULL on error.
  *
  * Since: 4.2
  **/
-XfceRc*
-expidus_rc_config_open (XfceResourceType type,
+ExpidusRc*
+expidus_rc_config_open (ExpidusResourceType type,
                      const gchar     *resource,
                      gboolean         readonly)
 {
-  XfceRcConfig *config;
+  ExpidusRcConfig *config;
 
   config = _expidus_rc_config_new (type, resource, readonly);
 
@@ -186,7 +186,7 @@ expidus_rc_config_open (XfceResourceType type,
 
 /**
  * expidus_rc_close:
- * @rc : an #XfceRc object.
+ * @rc : an #ExpidusRc object.
  *
  * Destructs @rc.
  *
@@ -196,7 +196,7 @@ expidus_rc_config_open (XfceResourceType type,
  * Since: 4.2
  **/
 void
-expidus_rc_close (XfceRc *rc)
+expidus_rc_close (ExpidusRc *rc)
 {
   g_return_if_fail (rc != NULL);
   g_return_if_fail (rc->close != NULL);
@@ -216,7 +216,7 @@ expidus_rc_close (XfceRc *rc)
 
 /**
  * expidus_rc_flush:
- * @rc : an #XfceRc object.
+ * @rc : an #ExpidusRc object.
  *
  * Flushes all changes that currently reside only in memory back to permanent
  * storage. Dirty configuration entries are written in the most specific file
@@ -225,7 +225,7 @@ expidus_rc_close (XfceRc *rc)
  * Since: 4.2
  **/
 void
-expidus_rc_flush (XfceRc *rc)
+expidus_rc_flush (ExpidusRc *rc)
 {
   g_return_if_fail (rc != NULL);
 
@@ -237,7 +237,7 @@ expidus_rc_flush (XfceRc *rc)
 
 /**
  * expidus_rc_rollback:
- * @rc : an #XfceRc object.
+ * @rc : an #ExpidusRc object.
  *
  * Mark @rc as "clean", i.e. don't write dirty entries at destruction time. If
  * you then call #expidus_rc_write_entry again, the dirty flag is set again and
@@ -246,7 +246,7 @@ expidus_rc_flush (XfceRc *rc)
  * Since: 4.2
  **/
 void
-expidus_rc_rollback (XfceRc *rc)
+expidus_rc_rollback (ExpidusRc *rc)
 {
   g_return_if_fail (rc != NULL);
 
@@ -258,7 +258,7 @@ expidus_rc_rollback (XfceRc *rc)
 
 /**
  * expidus_rc_is_dirty:
- * @rc : an #XfceRc object.
+ * @rc : an #ExpidusRc object.
  *
  * Checks whether @rc has any dirty (modified) entries.
  *
@@ -267,7 +267,7 @@ expidus_rc_rollback (XfceRc *rc)
  * Since: 4.2
  **/
 gboolean
-expidus_rc_is_dirty (const XfceRc *rc)
+expidus_rc_is_dirty (const ExpidusRc *rc)
 {
   g_return_val_if_fail (rc != NULL, FALSE);
 
@@ -281,7 +281,7 @@ expidus_rc_is_dirty (const XfceRc *rc)
 
 /**
  * expidus_rc_is_readonly:
- * @rc : an #XfceRc object.
+ * @rc : an #ExpidusRc object.
  *
  * Returns the read-only status of @rc.
  *
@@ -290,7 +290,7 @@ expidus_rc_is_dirty (const XfceRc *rc)
  * Since: 4.2
  **/
 gboolean
-expidus_rc_is_readonly (const XfceRc *rc)
+expidus_rc_is_readonly (const ExpidusRc *rc)
 {
   g_return_val_if_fail (rc != NULL, FALSE);
 
@@ -304,7 +304,7 @@ expidus_rc_is_readonly (const XfceRc *rc)
 
 /**
  * expidus_rc_get_locale:
- * @rc : an #XfceRc object.
+ * @rc : an #ExpidusRc object.
  *
  * Returns current locale used by @rc to lookup translated entries.
  *
@@ -313,7 +313,7 @@ expidus_rc_is_readonly (const XfceRc *rc)
  * Since: 4.2
  **/
 const gchar*
-expidus_rc_get_locale (const XfceRc *rc)
+expidus_rc_get_locale (const ExpidusRc *rc)
 {
   g_return_val_if_fail (rc != NULL, NULL);
 
@@ -327,7 +327,7 @@ expidus_rc_get_locale (const XfceRc *rc)
 
 /**
  * expidus_rc_get_groups:
- * @rc : an #XfceRc object.
+ * @rc : an #ExpidusRc object.
  *
  * Returns the names of all known groups in @rc.
  *
@@ -341,7 +341,7 @@ expidus_rc_get_locale (const XfceRc *rc)
  * Since: 4.2
  **/
 gchar**
-expidus_rc_get_groups (const XfceRc *rc)
+expidus_rc_get_groups (const ExpidusRc *rc)
 {
   g_return_val_if_fail (rc != NULL, NULL);
   g_return_val_if_fail (rc->get_groups != NULL, NULL);
@@ -353,7 +353,7 @@ expidus_rc_get_groups (const XfceRc *rc)
 
 /**
  * expidus_rc_get_entries:
- * @rc    : an #XfceRc object.
+ * @rc    : an #ExpidusRc object.
  * @group : the name of the group to get entries from.
  *
  * Returns the names of all entries in @group if any.
@@ -371,7 +371,7 @@ expidus_rc_get_groups (const XfceRc *rc)
  * Since: 4.2
  **/
 gchar**
-expidus_rc_get_entries (const XfceRc *rc, const gchar *group)
+expidus_rc_get_entries (const ExpidusRc *rc, const gchar *group)
 {
   g_return_val_if_fail (rc != NULL, NULL);
   g_return_val_if_fail (rc->get_entries != NULL, NULL);
@@ -383,7 +383,7 @@ expidus_rc_get_entries (const XfceRc *rc, const gchar *group)
 
 /**
  * expidus_rc_delete_group:
- * @rc     : an #XfceRc object.
+ * @rc     : an #ExpidusRc object.
  * @group  : name of the group to delete.
  * @global : whether to delete the group globally.
  *
@@ -400,7 +400,7 @@ expidus_rc_get_entries (const XfceRc *rc, const gchar *group)
  * Since: 4.2
  **/
 void
-expidus_rc_delete_group (XfceRc *rc, const gchar *group, gboolean global)
+expidus_rc_delete_group (ExpidusRc *rc, const gchar *group, gboolean global)
 {
   g_return_if_fail (rc != NULL);
 
@@ -412,7 +412,7 @@ expidus_rc_delete_group (XfceRc *rc, const gchar *group, gboolean global)
 
 /**
  * expidus_rc_get_group:
- * @rc : an #XfceRc object.
+ * @rc : an #ExpidusRc object.
  *
  * Returns the name of the group in which we are searching for keys and
  * from which we are retrieving entries. If the currently active group is
@@ -423,7 +423,7 @@ expidus_rc_delete_group (XfceRc *rc, const gchar *group, gboolean global)
  * Since: 4.2
  **/
 const gchar*
-expidus_rc_get_group (const XfceRc *rc)
+expidus_rc_get_group (const ExpidusRc *rc)
 {
   g_return_val_if_fail (rc != NULL, NULL);
   g_return_val_if_fail (rc->get_group != NULL, NULL);
@@ -435,7 +435,7 @@ expidus_rc_get_group (const XfceRc *rc)
 
 /**
  * expidus_rc_has_group:
- * @rc    : an #XfceRc object.
+ * @rc    : an #ExpidusRc object.
  * @group : the group to search for.
  *
  * Returns %TRUE if the specified @group is known about.
@@ -445,7 +445,7 @@ expidus_rc_get_group (const XfceRc *rc)
  * Since: 4.2
  **/
 gboolean
-expidus_rc_has_group (const XfceRc *rc, const gchar *group)
+expidus_rc_has_group (const ExpidusRc *rc, const gchar *group)
 {
   g_return_val_if_fail (rc != NULL, FALSE);
   g_return_val_if_fail (rc->has_group != NULL, FALSE);
@@ -457,7 +457,7 @@ expidus_rc_has_group (const XfceRc *rc, const gchar *group)
 
 /**
  * expidus_rc_set_group:
- * @rc    : an #XfceRc object.
+ * @rc    : an #ExpidusRc object.
  * @group : the name of the new group or %NULL to to switch back to the default group.
  *
  * Specifies the group in which keys will be read and written. Subsequent calls
@@ -470,7 +470,7 @@ expidus_rc_has_group (const XfceRc *rc, const gchar *group)
  * Since: 4.2
  **/
 void
-expidus_rc_set_group (XfceRc *rc, const gchar *group)
+expidus_rc_set_group (ExpidusRc *rc, const gchar *group)
 {
   g_return_if_fail (rc != NULL);
   g_return_if_fail (rc->set_group != NULL);
@@ -482,7 +482,7 @@ expidus_rc_set_group (XfceRc *rc, const gchar *group)
 
 /**
  * expidus_rc_delete_entry:
- * @rc     : an #XfceRc object.
+ * @rc     : an #ExpidusRc object.
  * @key    : the key to delete.
  * @global : whether to delete @key globally.
  *
@@ -492,7 +492,7 @@ expidus_rc_set_group (XfceRc *rc, const gchar *group)
  * Since: 4.2
  **/
 void
-expidus_rc_delete_entry (XfceRc *rc, const gchar *key, gboolean global)
+expidus_rc_delete_entry (ExpidusRc *rc, const gchar *key, gboolean global)
 {
   g_return_if_fail (rc != NULL);
   g_return_if_fail (key != NULL);
@@ -505,7 +505,7 @@ expidus_rc_delete_entry (XfceRc *rc, const gchar *key, gboolean global)
 
 /**
  * expidus_rc_has_entry:
- * @rc  : an #XfceRc object.
+ * @rc  : an #ExpidusRc object.
  * @key : the key to search for.
  *
  * Checks whether the @key has an entry in the current group.
@@ -515,7 +515,7 @@ expidus_rc_delete_entry (XfceRc *rc, const gchar *key, gboolean global)
  * Since: 4.2
  **/
 gboolean
-expidus_rc_has_entry (const XfceRc *rc,
+expidus_rc_has_entry (const ExpidusRc *rc,
                    const gchar  *key)
 {
   g_return_val_if_fail (rc != NULL, FALSE);
@@ -531,7 +531,7 @@ expidus_rc_has_entry (const XfceRc *rc,
 
 /**
  * expidus_rc_read_entry:
- * @rc       : an #XfceRc object.
+ * @rc       : an #ExpidusRc object.
  * @key      : the key to search for.
  * @fallback : a default value returned if the @key was not found.
  *
@@ -542,7 +542,7 @@ expidus_rc_has_entry (const XfceRc *rc,
  * Since: 4.2
  **/
 const gchar*
-expidus_rc_read_entry (const XfceRc *rc,
+expidus_rc_read_entry (const ExpidusRc *rc,
                     const gchar  *key,
                     const gchar  *fallback)
 {
@@ -562,7 +562,7 @@ expidus_rc_read_entry (const XfceRc *rc,
 
 /**
  * expidus_rc_read_entry_untranslated:
- * @rc       : an #XfceRc object.
+ * @rc       : an #ExpidusRc object.
  * @key      : the key to search for.
  * @fallback : a default value returned if the @key was not found.
  *
@@ -575,7 +575,7 @@ expidus_rc_read_entry (const XfceRc *rc,
  * Since: 4.2
  **/
 const gchar*
-expidus_rc_read_entry_untranslated (const XfceRc *rc,
+expidus_rc_read_entry_untranslated (const ExpidusRc *rc,
                                  const gchar  *key,
                                  const gchar  *fallback)
 {
@@ -595,7 +595,7 @@ expidus_rc_read_entry_untranslated (const XfceRc *rc,
 
 /**
  * expidus_rc_read_bool_entry:
- * @rc       : an #XfceRc object.
+ * @rc       : an #ExpidusRc object.
  * @key      : the key to search for.
  * @fallback : a default value returned if the @key was not found.
  *
@@ -608,7 +608,7 @@ expidus_rc_read_entry_untranslated (const XfceRc *rc,
  * Since: 4.2
  **/
 gboolean
-expidus_rc_read_bool_entry (const XfceRc *rc,
+expidus_rc_read_bool_entry (const ExpidusRc *rc,
                          const gchar  *key,
                          gboolean      fallback)
 {
@@ -629,7 +629,7 @@ expidus_rc_read_bool_entry (const XfceRc *rc,
 
 /**
  * expidus_rc_read_int_entry:
- * @rc       : an #XfceRc object.
+ * @rc       : an #ExpidusRc object.
  * @key      : the key to search for.
  * @fallback : a default value returned if the @key was not found.
  *
@@ -641,7 +641,7 @@ expidus_rc_read_bool_entry (const XfceRc *rc,
  * Since: 4.2
  **/
 gint
-expidus_rc_read_int_entry (const XfceRc *rc,
+expidus_rc_read_int_entry (const ExpidusRc *rc,
                         const gchar  *key,
                         gint          fallback)
 {
@@ -668,7 +668,7 @@ expidus_rc_read_int_entry (const XfceRc *rc,
 
 /**
  * expidus_rc_read_list_entry:
- * @rc        : an #XfceRc object.
+ * @rc        : an #ExpidusRc object.
  * @key       : the key to search for.
  * @delimiter : a string which specifies the places at which to split the string.
  *              The delimiter is not included in any of the resulting strings.
@@ -682,7 +682,7 @@ expidus_rc_read_int_entry (const XfceRc *rc,
  * Since: 4.2
  **/
 gchar**
-expidus_rc_read_list_entry (const XfceRc *rc,
+expidus_rc_read_list_entry (const ExpidusRc *rc,
                          const gchar  *key,
                          const gchar  *delimiter)
 {
@@ -703,7 +703,7 @@ expidus_rc_read_list_entry (const XfceRc *rc,
 
 /**
  * expidus_rc_write_entry:
- * @rc    : an #XfceRc object.
+ * @rc    : an #ExpidusRc object.
  * @key   : the key to write.
  * @value : the value to write.
  *
@@ -718,7 +718,7 @@ expidus_rc_read_list_entry (const XfceRc *rc,
  * Since: 4.2
  **/
 void
-expidus_rc_write_entry (XfceRc      *rc,
+expidus_rc_write_entry (ExpidusRc      *rc,
                      const gchar *key,
                      const gchar *value)
 {
@@ -734,7 +734,7 @@ expidus_rc_write_entry (XfceRc      *rc,
 
 /**
  * expidus_rc_write_bool_entry:
- * @rc    : an #XfceRc object.
+ * @rc    : an #ExpidusRc object.
  * @key   : the key to write.
  * @value : the value to write.
  *
@@ -743,7 +743,7 @@ expidus_rc_write_entry (XfceRc      *rc,
  * Since: 4.2
  **/
 void
-expidus_rc_write_bool_entry (XfceRc      *rc,
+expidus_rc_write_bool_entry (ExpidusRc      *rc,
                           const gchar *key,
                           gboolean     value)
 {
@@ -754,7 +754,7 @@ expidus_rc_write_bool_entry (XfceRc      *rc,
 
 /**
  * expidus_rc_write_int_entry:
- * @rc    : an #XfceRc object.
+ * @rc    : an #ExpidusRc object.
  * @key   : the key to write.
  * @value : the value to write.
  *
@@ -763,7 +763,7 @@ expidus_rc_write_bool_entry (XfceRc      *rc,
  * Since: 4.2
  **/
 void
-expidus_rc_write_int_entry (XfceRc      *rc,
+expidus_rc_write_int_entry (ExpidusRc      *rc,
                          const gchar *key,
                          gint         value)
 {
@@ -777,7 +777,7 @@ expidus_rc_write_int_entry (XfceRc      *rc,
 
 /**
  * expidus_rc_write_list_entry:
- * @rc        : an #XfceRc object.
+ * @rc        : an #ExpidusRc object.
  * @key       : the key to write.
  * @value     : a %NULL terminated list of strings to store in the entry specified by key.
  * @separator : the list separator. Defaults to "," if %NULL.
@@ -787,7 +787,7 @@ expidus_rc_write_int_entry (XfceRc      *rc,
  * Since: 4.2
  **/
 void
-expidus_rc_write_list_entry (XfceRc      *rc,
+expidus_rc_write_list_entry (ExpidusRc      *rc,
                           const gchar *key,
                           gchar      **value,
                           const gchar *separator)

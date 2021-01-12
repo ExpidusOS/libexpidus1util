@@ -63,10 +63,10 @@
 typedef struct
 {
     gint signal_id;
-    XfcePosixSignalHandler handler;
+    ExpidusPosixSignalHandler handler;
     gpointer user_data;
     struct sigaction old_sa;
-} XfcePosixSignalHandlerData;
+} ExpidusPosixSignalHandlerData;
 
 static gboolean __inited = FALSE;
 static int __signal_pipe[2] = { -1, -1 };
@@ -76,7 +76,7 @@ static guint __io_watch_id = 0;
 
 
 static void
-expidus_posix_signal_handler_data_free(XfcePosixSignalHandlerData *hdata)
+expidus_posix_signal_handler_data_free(ExpidusPosixSignalHandlerData *hdata)
 {
     if(!hdata)
         return;
@@ -93,7 +93,7 @@ expidus_posix_signal_handler_pipe_io(GIOChannel *source,
     gint signal_id = 0;
     GError *error = NULL;
     gsize bin = 0;
-    XfcePosixSignalHandlerData *hdata;
+    ExpidusPosixSignalHandlerData *hdata;
 
     if(G_IO_STATUS_NORMAL == g_io_channel_read_chars(source, (gchar *)&signal_id,
                                                      sizeof(signal_id), &bin,
@@ -205,11 +205,11 @@ expidus_posix_signal_handler_shutdown(void)
  **/
 gboolean
 expidus_posix_signal_handler_set_handler(gint signal,
-                                      XfcePosixSignalHandler handler,
+                                      ExpidusPosixSignalHandler handler,
                                       gpointer user_data,
                                       GError **error)
 {
-    XfcePosixSignalHandlerData *hdata;
+    ExpidusPosixSignalHandlerData *hdata;
     struct sigaction sa;
 
     if(G_UNLIKELY(!__inited)) {
@@ -229,7 +229,7 @@ expidus_posix_signal_handler_set_handler(gint signal,
     if(g_hash_table_lookup(__handlers, GINT_TO_POINTER(signal)))
         expidus_posix_signal_handler_restore_handler(signal);
 
-    hdata = g_new0(XfcePosixSignalHandlerData, 1);
+    hdata = g_new0(ExpidusPosixSignalHandlerData, 1);
     hdata->signal_id = signal;
     hdata->handler = handler;
     hdata->user_data = user_data;

@@ -1,0 +1,2202 @@
+<?xml version="1.0"?>
+<!-- This file was automatically generated from C sources - DO NOT EDIT!
+To affect the contents of this file, edit the original C definitions,
+and/or use gtk-doc annotations.  -->
+<repository version="1.2"
+            xmlns="http://www.gtk.org/introspection/core/1.0"
+            xmlns:c="http://www.gtk.org/introspection/c/1.0"
+            xmlns:glib="http://www.gtk.org/introspection/glib/1.0">
+  <include name="GLib" version="2.0"/>
+  <include name="GObject" version="2.0"/>
+  <package name="libexpidus1util-1.0"/>
+  <c:include name="libexpidus1util/libexpidus1util.h"/>
+  <namespace name="Libexpidus1util"
+             version="1.0"
+             shared-library="libexpidus1util.so.7"
+             c:identifier-prefixes="Expidus,expidus,libexpidus"
+             c:symbol-prefixes="expidus,expidus,libexpidus">
+    <function-macro name="GENERIC_STACK"
+                    c:identifier="EXPIDUS_GENERIC_STACK"
+                    introspectable="0">
+      <doc xml:space="preserve"
+           filename="expidus-generics.h"
+           line="58">This macro is used to create a new stack data type which elements are of
+@Type. For example, to create a stack type that handles elements of type
+%double, you'd write the following
+
+|[&lt;!-- language="C" --&gt;
+typedef EXPIDUS_GENERIC_STACK(double) MyDoubleStack;
+]|
+and furtheron refer to your stack type as %MyDoubleStack.</doc>
+      <source-position filename="expidus-generics.h" line="74"/>
+      <parameters>
+        <parameter name="Type">
+          <doc xml:space="preserve"
+               filename="expidus-generics.h"
+               line="60">Data type of the elements that should be handled by the stack. Can be any valid data type from simple int's to complex structures.</doc>
+        </parameter>
+      </parameters>
+    </function-macro>
+    <class name="Kiosk"
+           c:symbol-prefix="kiosk"
+           c:type="ExpidusKiosk"
+           parent="GObject.Object"
+           glib:type-name="ExpidusKiosk"
+           glib:get-type="expidus_kiosk_get_type"
+           glib:type-struct="KioskClass">
+      <source-position filename="expidus-kiosk.h" line="35"/>
+      <constructor name="new" c:identifier="expidus_kiosk_new" version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-kiosk.c"
+             line="103">Creates and returns a new instance of #ExpidusKiosk.</doc>
+        <source-position filename="expidus-kiosk.h" line="37"/>
+        <return-value transfer-ownership="full">
+          <doc xml:space="preserve"
+               filename="expidus-kiosk.c"
+               line="109">a new instance of #ExpidusKiosk.</doc>
+          <type name="Kiosk" c:type="ExpidusKiosk*"/>
+        </return-value>
+        <parameters>
+          <parameter name="module" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-kiosk.c"
+                 line="105">The Expidus project to query about</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+        </parameters>
+      </constructor>
+      <method name="free" c:identifier="expidus_kiosk_free" version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-kiosk.c"
+             line="214">Frees the @kiosk object.
+In 4.13 and above, this is equivalent to calling g_clear_object.</doc>
+        <source-position filename="expidus-kiosk.h" line="40"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="kiosk" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-kiosk.c"
+                 line="216">A #ExpidusKiosk.</doc>
+            <type name="Kiosk" c:type="ExpidusKiosk*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="query" c:identifier="expidus_kiosk_query" version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-kiosk.c"
+             line="132">Queries the @kiosk object for a given capability and returns %TRUE if
+the current user has the @capability, else %FALSE.</doc>
+        <source-position filename="expidus-kiosk.h" line="38"/>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-kiosk.c"
+               line="140">%TRUE if the current user has the @capability, else %FALSE.</doc>
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="kiosk" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-kiosk.c"
+                 line="134">A #ExpidusKiosk.</doc>
+            <type name="Kiosk" c:type="const ExpidusKiosk*"/>
+          </instance-parameter>
+          <parameter name="capability" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-kiosk.c"
+                 line="135">The name of the capability to check.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+    </class>
+    <record name="KioskClass"
+            c:type="ExpidusKioskClass"
+            glib:is-gtype-struct-for="Kiosk">
+      <source-position filename="expidus-kiosk.h" line="35"/>
+      <field name="parent_class">
+        <type name="GObject.ObjectClass" c:type="GObjectClass"/>
+      </field>
+    </record>
+    <constant name="LOCALE_FULL_MATCH"
+              value="50"
+              c:type="EXPIDUS_LOCALE_FULL_MATCH">
+      <source-position filename="expidus-i18n.h" line="88"/>
+      <type name="gint" c:type="gint"/>
+    </constant>
+    <constant name="LOCALE_NO_MATCH"
+              value="0"
+              c:type="EXPIDUS_LOCALE_NO_MATCH">
+      <source-position filename="expidus-i18n.h" line="89"/>
+      <type name="gint" c:type="gint"/>
+    </constant>
+    <enumeration name="LicenseTextType" c:type="ExpidusLicenseTextType">
+      <doc xml:space="preserve"
+           filename="expidus-license.h"
+           line="31">The license text to return from expidus_get_license_text().</doc>
+      <source-position filename="expidus-license.h" line="44"/>
+      <member name="bsd" value="0" c:identifier="EXPIDUS_LICENSE_TEXT_BSD">
+        <doc xml:space="preserve"
+             filename="expidus-license.h"
+             line="33">the BSD License.</doc>
+      </member>
+      <member name="gpl" value="1" c:identifier="EXPIDUS_LICENSE_TEXT_GPL">
+        <doc xml:space="preserve"
+             filename="expidus-license.h"
+             line="34">the GNU General Public License.</doc>
+      </member>
+      <member name="lgpl" value="2" c:identifier="EXPIDUS_LICENSE_TEXT_LGPL">
+        <doc xml:space="preserve"
+             filename="expidus-license.h"
+             line="35">the GNU Lesser General Public License.</doc>
+      </member>
+    </enumeration>
+    <callback name="MatchFunc" c:type="ExpidusMatchFunc">
+      <source-position filename="expidus-resource.h" line="56"/>
+      <return-value transfer-ownership="none">
+        <type name="gboolean" c:type="gboolean"/>
+      </return-value>
+      <parameters>
+        <parameter name="basedir" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-resource.h"
+               line="50">basedir</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="relpath" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-resource.h"
+               line="51">relpath</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="user_data"
+                   transfer-ownership="none"
+                   nullable="1"
+                   allow-none="1"
+                   closure="2">
+          <doc xml:space="preserve"
+               filename="expidus-resource.h"
+               line="52">additional user data passed to expidus_resource_match_custom().</doc>
+          <type name="gpointer" c:type="gpointer"/>
+        </parameter>
+      </parameters>
+    </callback>
+    <callback name="PosixSignalHandler" c:type="ExpidusPosixSignalHandler">
+      <source-position filename="expidus-posix-signal-handler.h" line="37"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="signal" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-posix-signal-handler.h"
+               line="33">The signal that was caught.</doc>
+          <type name="gint" c:type="gint"/>
+        </parameter>
+        <parameter name="user_data"
+                   transfer-ownership="none"
+                   nullable="1"
+                   allow-none="1"
+                   closure="1">
+          <doc xml:space="preserve"
+               filename="expidus-posix-signal-handler.h"
+               line="34">The @user_data parameter passed when the handler was registered.</doc>
+          <type name="gpointer" c:type="gpointer"/>
+        </parameter>
+      </parameters>
+    </callback>
+    <function-macro name="RC" c:identifier="EXPIDUS_RC" introspectable="0">
+      <source-position filename="expidus-rc.h" line="37"/>
+      <parameters>
+        <parameter name="obj">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="RC_CONST"
+                    c:identifier="EXPIDUS_RC_CONST"
+                    introspectable="0">
+      <source-position filename="expidus-rc.h" line="38"/>
+      <parameters>
+        <parameter name="obj">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <record name="Rc"
+            c:type="ExpidusRc"
+            glib:type-name="ExpidusRc"
+            glib:get-type="expidus_rc_get_type"
+            c:symbol-prefix="rc">
+      <source-position filename="expidus-rc.h" line="34"/>
+      <method name="close" c:identifier="expidus_rc_close" version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="187">Destructs @rc.
+
+If @rc was opened read-write and contains dirty (modified) entries, these
+will be flushed to permanent storage first.</doc>
+        <source-position filename="expidus-rc.h" line="49"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="189">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="ExpidusRc*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="delete_entry"
+              c:identifier="expidus_rc_delete_entry"
+              version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="483">Similar to #expidus_rc_delete_group, but works on an entry in the current
+group.</doc>
+        <source-position filename="expidus-rc.h" line="71"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="485">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="ExpidusRc*"/>
+          </instance-parameter>
+          <parameter name="key" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="486">the key to delete.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+          <parameter name="global" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="487">whether to delete @key globally.</doc>
+            <type name="gboolean" c:type="gboolean"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="delete_group"
+              c:identifier="expidus_rc_delete_group"
+              version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="384">If @rc is a simple config object and @group exists, it is deleted. All entries
+within @group will be deleted. For simple config objects, @global is ignored.
+
+If @rc is a complex config object and @group exists, it will be deleted will
+all entries. If @global is %TRUE, the entry will be marked as deleted globally,
+therefore all calls to #expidus_rc_read_entry and related functions will return
+the fallback values. If @global is %FALSE, the @group will be deleted in the
+per-user config file, and further calls to #expidus_rc_read_entry will most
+probably return the system-wide config entries.</doc>
+        <source-position filename="expidus-rc.h" line="62"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="386">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="ExpidusRc*"/>
+          </instance-parameter>
+          <parameter name="group" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="387">name of the group to delete.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+          <parameter name="global" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="388">whether to delete the group globally.</doc>
+            <type name="gboolean" c:type="gboolean"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="flush" c:identifier="expidus_rc_flush" version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="217">Flushes all changes that currently reside only in memory back to permanent
+storage. Dirty configuration entries are written in the most specific file
+available.</doc>
+        <source-position filename="expidus-rc.h" line="50"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="219">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="ExpidusRc*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="get_entries"
+              c:identifier="expidus_rc_get_entries"
+              version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="354">Returns the names of all entries in @group if any.
+
+%NULL is a valid input value for @group. #expidus_rc_get_entries will
+then return all entries in the so called "NULL group". Though this
+"NULL group" should only be used for backward compatibility with old
+applications. You should not use it in newly written code.</doc>
+        <source-position filename="expidus-rc.h" line="59"/>
+        <return-value transfer-ownership="full">
+          <doc xml:space="preserve"
+               filename="expidus-rc.c"
+               line="366">a NULL-terminated string array with all entries in @group. Has to
+              be freed using g_strfreev() if no longer needed. If the specified
+              @group does not exists, %NULL is returned. If the @group has no entries,
+              an empty string array is returned.</doc>
+          <array c:type="gchar**">
+            <type name="utf8"/>
+          </array>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="356">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="const ExpidusRc*"/>
+          </instance-parameter>
+          <parameter name="group" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="357">the name of the group to get entries from.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="get_group"
+              c:identifier="expidus_rc_get_group"
+              version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="413">Returns the name of the group in which we are searching for keys and
+from which we are retrieving entries. If the currently active group is
+the default group (the so called "NULL group"), %NULL will be returned.</doc>
+        <source-position filename="expidus-rc.h" line="65"/>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-rc.c"
+               line="421">the name of the current group.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="415">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="const ExpidusRc*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="get_groups"
+              c:identifier="expidus_rc_get_groups"
+              version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="328">Returns the names of all known groups in @rc.
+
+Since the default groups (the "NULL group") name is %NULL, it will not be
+returned with this functions. But it does not matter at all, since the
+default group is known to always exist.</doc>
+        <source-position filename="expidus-rc.h" line="58"/>
+        <return-value transfer-ownership="full">
+          <doc xml:space="preserve"
+               filename="expidus-rc.c"
+               line="338">a NULL-terminated string array will the names of all groups in
+              @rc. Should be freed using g_strfreev() when no longer needed.</doc>
+          <array c:type="gchar**">
+            <type name="utf8"/>
+          </array>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="330">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="const ExpidusRc*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="get_locale"
+              c:identifier="expidus_rc_get_locale"
+              version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="305">Returns current locale used by @rc to lookup translated entries.</doc>
+        <source-position filename="expidus-rc.h" line="56"/>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-rc.c"
+               line="311">a string representing the current locale.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="307">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="const ExpidusRc*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="has_entry"
+              c:identifier="expidus_rc_has_entry"
+              version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="506">Checks whether the @key has an entry in the current group.</doc>
+        <source-position filename="expidus-rc.h" line="74"/>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-rc.c"
+               line="513">%TRUE if the @key is available, else %FALSE.</doc>
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="508">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="const ExpidusRc*"/>
+          </instance-parameter>
+          <parameter name="key" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="509">the key to search for.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="has_group"
+              c:identifier="expidus_rc_has_group"
+              version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="436">Returns %TRUE if the specified @group is known about.</doc>
+        <source-position filename="expidus-rc.h" line="66"/>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-rc.c"
+               line="443">%TRUE if the @group exists.</doc>
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="438">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="const ExpidusRc*"/>
+          </instance-parameter>
+          <parameter name="group" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="439">the group to search for.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="is_dirty" c:identifier="expidus_rc_is_dirty" version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="259">Checks whether @rc has any dirty (modified) entries.</doc>
+        <source-position filename="expidus-rc.h" line="53"/>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-rc.c"
+               line="265">%TRUE if @rc has any dirty (modified) entries.</doc>
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="261">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="const ExpidusRc*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="is_readonly"
+              c:identifier="expidus_rc_is_readonly"
+              version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="282">Returns the read-only status of @rc.</doc>
+        <source-position filename="expidus-rc.h" line="54"/>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-rc.c"
+               line="288">the read-only status.</doc>
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="284">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="const ExpidusRc*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="read_bool_entry"
+              c:identifier="expidus_rc_read_bool_entry"
+              version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="596">Reads the value of an entry specified by @key in the current group and interpret
+it as a boolean value. Currently "on", "true" and "yes" are accepted as true,
+everything else is false.</doc>
+        <source-position filename="expidus-rc.h" line="83"/>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-rc.c"
+               line="606">the value for this @key.</doc>
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="598">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="const ExpidusRc*"/>
+          </instance-parameter>
+          <parameter name="key" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="599">the key to search for.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+          <parameter name="fallback" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="600">a default value returned if the @key was not found.</doc>
+            <type name="gboolean" c:type="gboolean"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="read_entry"
+              c:identifier="expidus_rc_read_entry"
+              version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="532">Reads the value of an entry specified by @key in the current group.</doc>
+        <source-position filename="expidus-rc.h" line="77"/>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-rc.c"
+               line="540">the value for this @key, or @fallback if @key was not found.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="534">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="const ExpidusRc*"/>
+          </instance-parameter>
+          <parameter name="key" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="535">the key to search for.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+          <parameter name="fallback" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="536">a default value returned if the @key was not found.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="read_entry_untranslated"
+              c:identifier="expidus_rc_read_entry_untranslated"
+              version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="563">Reads the value of an entry specified by @key in the current group. The
+untranslated entry is returned. You normally do not need this.</doc>
+        <source-position filename="expidus-rc.h" line="80"/>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-rc.c"
+               line="572">the untranslated value for this @key, or @fallback if @key was not
+              found.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="565">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="const ExpidusRc*"/>
+          </instance-parameter>
+          <parameter name="key" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="566">the key to search for.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+          <parameter name="fallback" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="567">a default value returned if the @key was not found.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="read_int_entry"
+              c:identifier="expidus_rc_read_int_entry"
+              version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="630">Reads the value of an entry specified by @key in the current group
+and interprets it as an integer value.</doc>
+        <source-position filename="expidus-rc.h" line="86"/>
+        <return-value transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-rc.c"
+               line="639">the value for this @key.</doc>
+          <type name="gint" c:type="gint"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="632">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="const ExpidusRc*"/>
+          </instance-parameter>
+          <parameter name="key" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="633">the key to search for.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+          <parameter name="fallback" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="634">a default value returned if the @key was not found.</doc>
+            <type name="gint" c:type="gint"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="read_list_entry"
+              c:identifier="expidus_rc_read_list_entry"
+              version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="669">Reads a list of strings in the entry specified by key in the current group.
+The returned list has to be freed using g_strfreev() when no longer needed.</doc>
+        <source-position filename="expidus-rc.h" line="89"/>
+        <return-value transfer-ownership="full">
+          <doc xml:space="preserve"
+               filename="expidus-rc.c"
+               line="680">the list or NULL if the entry does not exist.</doc>
+          <array c:type="gchar**">
+            <type name="utf8"/>
+          </array>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="671">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="const ExpidusRc*"/>
+          </instance-parameter>
+          <parameter name="key" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="672">the key to search for.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+          <parameter name="delimiter" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="673">a string which specifies the places at which to split the string.
+             The delimiter is not included in any of the resulting strings.
+             If NULL, "," is used.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="rollback" c:identifier="expidus_rc_rollback" version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="238">Mark @rc as "clean", i.e. don't write dirty entries at destruction time. If
+you then call #expidus_rc_write_entry again, the dirty flag is set again and
+dirty entries will be written at a subsequent #expidus_rc_flush call.</doc>
+        <source-position filename="expidus-rc.h" line="51"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="240">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="ExpidusRc*"/>
+          </instance-parameter>
+        </parameters>
+      </method>
+      <method name="set_group"
+              c:identifier="expidus_rc_set_group"
+              version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="458">Specifies the group in which keys will be read and written. Subsequent calls
+to #expidus_rc_read_entry and #expidus_rc_write_entry will be applied only in the
+active group.
+
+If @group references a group that does not exists, it will be created for
+you. But note, that empty groups will not be synced to permanent storage.</doc>
+        <source-position filename="expidus-rc.h" line="68"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="460">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="ExpidusRc*"/>
+          </instance-parameter>
+          <parameter name="group" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="461">the name of the new group or %NULL to to switch back to the default group.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="write_bool_entry"
+              c:identifier="expidus_rc_write_bool_entry"
+              version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="735">Wrapper for #expidus_rc_write_entry, that stores a boolean @value.</doc>
+        <source-position filename="expidus-rc.h" line="95"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="737">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="ExpidusRc*"/>
+          </instance-parameter>
+          <parameter name="key" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="738">the key to write.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+          <parameter name="value" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="739">the value to write.</doc>
+            <type name="gboolean" c:type="gboolean"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="write_entry"
+              c:identifier="expidus_rc_write_entry"
+              version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="704">Writes a @key/@value pair. This has no effect if the resource config
+was opened readonly, else the value will be written to permanent storage
+on the next call to #expidus_rc_flush or when @rc is destroyed using
+#expidus_rc_close.
+
+If @rc was opened using #expidus_rc_config_open, the value will be
+written to the most specific config file.</doc>
+        <source-position filename="expidus-rc.h" line="92"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="706">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="ExpidusRc*"/>
+          </instance-parameter>
+          <parameter name="key" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="707">the key to write.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+          <parameter name="value" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="708">the value to write.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="write_int_entry"
+              c:identifier="expidus_rc_write_int_entry"
+              version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="755">Wrapper for #expidus_rc_write_entry, that stores an integer @value.</doc>
+        <source-position filename="expidus-rc.h" line="98"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="757">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="ExpidusRc*"/>
+          </instance-parameter>
+          <parameter name="key" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="758">the key to write.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+          <parameter name="value" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="759">the value to write.</doc>
+            <type name="gint" c:type="gint"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="write_list_entry"
+              c:identifier="expidus_rc_write_list_entry"
+              version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="778">Wrapper for #expidus_rc_write_entry, that stores a string list @value.</doc>
+        <source-position filename="expidus-rc.h" line="101"/>
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <instance-parameter name="rc" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="780">an #ExpidusRc object.</doc>
+            <type name="Rc" c:type="ExpidusRc*"/>
+          </instance-parameter>
+          <parameter name="key" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="781">the key to write.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+          <parameter name="value" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="782">a %NULL terminated list of strings to store in the entry specified by key.</doc>
+            <type name="utf8" c:type="gchar**"/>
+          </parameter>
+          <parameter name="separator" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="783">the list separator. Defaults to "," if %NULL.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <function name="config_open"
+                c:identifier="expidus_rc_config_open"
+                version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="154">If @readonly is %TRUE parsing is generally faster, because only untranslated
+entries and entries that match the current locale will be loaded. Also if
+you pass %TRUE for @readonly, #expidus_rc_config will fail if @resource
+does not reference a regular file.
+
+It is no error if @readonly is %FALSE and the file referenced by @resource
+does not exists. In this case you'll start with a fresh config, which contains
+only the default group and no entries.</doc>
+        <source-position filename="expidus-rc.h" line="45"/>
+        <return-value transfer-ownership="full">
+          <doc xml:space="preserve"
+               filename="expidus-rc.c"
+               line="169">the newly created #ExpidusRc object, or %NULL on error.</doc>
+          <type name="Rc" c:type="ExpidusRc*"/>
+        </return-value>
+        <parameters>
+          <parameter name="type" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="156">The resource type being opened</doc>
+            <type name="ResourceType" c:type="ExpidusResourceType"/>
+          </parameter>
+          <parameter name="resource" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="157">The resource name to open</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+          <parameter name="readonly" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="158">whether to open @resource readonly.</doc>
+            <type name="gboolean" c:type="gboolean"/>
+          </parameter>
+        </parameters>
+      </function>
+      <function name="simple_open"
+                c:identifier="expidus_rc_simple_open"
+                version="4.2">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="109">Parses the resource config file specified by @filename.
+
+If @readonly is %TRUE parsing is generally faster, because only untranslated
+entries and entries that match the current locale will be loaded. Also if
+you pass %TRUE for @readonly, #expidus_rc_simple_open will fail if @filename
+does not reference a regular file.
+
+It is no error if @readonly is %FALSE and the file referenced by @filename
+does not exists. In this case you'll start with a fresh config, which contains
+only the default group and no entries.</doc>
+        <source-position filename="expidus-rc.h" line="42"/>
+        <return-value transfer-ownership="full">
+          <doc xml:space="preserve"
+               filename="expidus-rc.c"
+               line="125">the newly created #ExpidusRc object, or %NULL on error.</doc>
+          <type name="Rc" c:type="ExpidusRc*"/>
+        </return-value>
+        <parameters>
+          <parameter name="filename" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="111">name of the filename to open.</doc>
+            <type name="utf8" c:type="const gchar*"/>
+          </parameter>
+          <parameter name="readonly" transfer-ownership="none">
+            <doc xml:space="preserve"
+                 filename="expidus-rc.c"
+                 line="112">whether to open @filename readonly.</doc>
+            <type name="gboolean" c:type="gboolean"/>
+          </parameter>
+        </parameters>
+      </function>
+    </record>
+    <enumeration name="ResourceType" c:type="ExpidusResourceType">
+      <source-position filename="expidus-resource.h" line="46"/>
+      <member name="data" value="0" c:identifier="EXPIDUS_RESOURCE_DATA">
+        <doc xml:space="preserve"
+             filename="expidus-resource.h"
+             line="33">where applications store data.</doc>
+      </member>
+      <member name="config" value="1" c:identifier="EXPIDUS_RESOURCE_CONFIG">
+        <doc xml:space="preserve"
+             filename="expidus-resource.h"
+             line="34">configuration files.</doc>
+      </member>
+      <member name="cache" value="2" c:identifier="EXPIDUS_RESOURCE_CACHE">
+        <doc xml:space="preserve"
+             filename="expidus-resource.h"
+             line="35">cached information.</doc>
+      </member>
+      <member name="icons" value="3" c:identifier="EXPIDUS_RESOURCE_ICONS">
+        <doc xml:space="preserve"
+             filename="expidus-resource.h"
+             line="36">icon search path.</doc>
+      </member>
+      <member name="themes" value="4" c:identifier="EXPIDUS_RESOURCE_THEMES">
+        <doc xml:space="preserve"
+             filename="expidus-resource.h"
+             line="37">themes search path.</doc>
+      </member>
+    </enumeration>
+    <function name="append_quoted" c:identifier="expidus_append_quoted">
+      <source-position filename="expidus-miscutils.h" line="93"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="string" transfer-ownership="none">
+          <type name="GLib.String" c:type="GString*"/>
+        </parameter>
+        <parameter name="unquoted" transfer-ownership="none">
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="expand_desktop_entry_field_codes"
+              c:identifier="expidus_expand_desktop_entry_field_codes"
+              introspectable="0">
+      <doc xml:space="preserve"
+           filename="expidus-miscutils.c"
+           line="480">Expands field codes in @command according to Freedesktop.org Desktop Entry Specification.</doc>
+      <source-position filename="expidus-miscutils.h" line="96"/>
+      <return-value transfer-ownership="full">
+        <doc xml:space="preserve"
+             filename="expidus-miscutils.c"
+             line="491">%NULL on error, else the string, which should be freed using g_free() when
+              no longer needed.</doc>
+        <type name="utf8" c:type="gchar*"/>
+      </return-value>
+      <parameters>
+        <parameter name="command" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-miscutils.c"
+               line="482">Input string (command to expand) or %NULL.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="uri_list" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-miscutils.c"
+               line="483">Input string list (filename/URL field) or %NULL.</doc>
+          <type name="GLib.SList" c:type="GSList*">
+            <type name="gpointer" c:type="gpointer"/>
+          </type>
+        </parameter>
+        <parameter name="icon" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-miscutils.c"
+               line="484">Input string (icon field) or %NULL.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="name" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-miscutils.c"
+               line="485">Input string (name field) or %NULL.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="uri" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-miscutils.c"
+               line="486">Input string (URI field) or %NULL.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="requires_terminal" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-miscutils.c"
+               line="487">Input boolean.</doc>
+          <type name="gboolean" c:type="gboolean"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="expand_variables"
+              c:identifier="expidus_expand_variables"
+              version="4.2">
+      <doc xml:space="preserve"
+           filename="expidus-miscutils.c"
+           line="334">Expands shell like environment variables and tilde (~/ and ~user/ are both supported)
+in @command.</doc>
+      <source-position filename="expidus-miscutils.h" line="90"/>
+      <return-value transfer-ownership="full">
+        <doc xml:space="preserve"
+             filename="expidus-miscutils.c"
+             line="344">%NULL on error, else the string, which should be freed using
+              g_free() when no longer needed.</doc>
+        <type name="utf8" c:type="gchar*"/>
+      </return-value>
+      <parameters>
+        <parameter name="command" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-miscutils.c"
+               line="336">Input string or %NULL.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="envp" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-miscutils.c"
+               line="337">Addition environment variables to take into account. These
+           variables have higher priority than the ones in the process's
+           environment.</doc>
+          <type name="utf8" c:type="gchar**"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="get_dir_localized"
+              c:identifier="expidus_get_dir_localized">
+      <doc xml:space="preserve"
+           filename="expidus-i18n.c"
+           line="226">Similar to expidus_get_file_localized(), but works on directory instead of
+a file.</doc>
+      <source-position filename="expidus-i18n.h" line="77"/>
+      <return-value transfer-ownership="full">
+        <doc xml:space="preserve"
+             filename="expidus-i18n.c"
+             line="233">path of the localized directory name or copy of @directory if
+              no such directory exists. Returned string should be freed using
+              g_free().</doc>
+        <type name="utf8" c:type="gchar*"/>
+      </return-value>
+      <parameters>
+        <parameter name="directory" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-i18n.c"
+               line="228">directory name to check for a localized variant.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="get_dir_localized_r"
+              c:identifier="expidus_get_dir_localized_r">
+      <doc xml:space="preserve"
+           filename="expidus-i18n.c"
+           line="249">Similar to #expidus_get_file_localized_r, but works on directory instead
+of regular file.</doc>
+      <source-position filename="expidus-i18n.h" line="78"/>
+      <return-value transfer-ownership="full">
+        <doc xml:space="preserve"
+             filename="expidus-i18n.c"
+             line="258">pointer to @buffer or %NULL on error.</doc>
+        <type name="utf8" c:type="gchar*"/>
+      </return-value>
+      <parameters>
+        <parameter name="buffer" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-i18n.c"
+               line="251">destination buffer to store the localized filename to.</doc>
+          <type name="utf8" c:type="gchar*"/>
+        </parameter>
+        <parameter name="length" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-i18n.c"
+               line="252">size of @buffer in bytes.</doc>
+          <type name="gsize" c:type="gsize"/>
+        </parameter>
+        <parameter name="directory" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-i18n.c"
+               line="253">name of directory to check for localized variant of.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="get_file_localized"
+              c:identifier="expidus_get_file_localized">
+      <doc xml:space="preserve"
+           filename="expidus-i18n.c"
+           line="178">Checks if theres a version of @filename which is localized to the current
+locale. This is done by appending the full locale name to @filename, separated
+by a '.'. If theres no file of that name, it retries using the full locale
+name without the encoding (if any), then without the qualifier (if any) and
+at last the base locale is tried. If all of those fails, a copy of @filename
+is returned.</doc>
+      <source-position filename="expidus-i18n.h" line="72"/>
+      <return-value transfer-ownership="full">
+        <doc xml:space="preserve"
+             filename="expidus-i18n.c"
+             line="189">path of the localized file or copy of @filename if no such
+              file exists. Returned string should be freed using g_free().</doc>
+        <type name="utf8" c:type="gchar*"/>
+      </return-value>
+      <parameters>
+        <parameter name="filename" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-i18n.c"
+               line="180">name of a file to look for a localized version.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="get_file_localized_r"
+              c:identifier="expidus_get_file_localized_r">
+      <doc xml:space="preserve"
+           filename="expidus-i18n.c"
+           line="204">Similar in functionality to expidus_get_file_localized(), but stores the
+result in @buffer instead of allocating a new buffer.</doc>
+      <source-position filename="expidus-i18n.h" line="73"/>
+      <return-value transfer-ownership="full">
+        <doc xml:space="preserve"
+             filename="expidus-i18n.c"
+             line="213">pointer to @buffer or %NULL on error.</doc>
+        <type name="utf8" c:type="gchar*"/>
+      </return-value>
+      <parameters>
+        <parameter name="buffer" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-i18n.c"
+               line="206">destination buffer to store the localized filename to.</doc>
+          <type name="utf8" c:type="gchar*"/>
+        </parameter>
+        <parameter name="length" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-i18n.c"
+               line="207">size of @buffer in bytes.</doc>
+          <type name="gsize" c:type="gsize"/>
+        </parameter>
+        <parameter name="filename" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-i18n.c"
+               line="208">name of a file to look for a localized version.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="get_homedir" c:identifier="expidus_get_homedir">
+      <doc xml:space="preserve"
+           filename="expidus-miscutils.c"
+           line="172">Similar to g_get_homedir() in functionality but will never return NULL.
+While g_get_homedir() may return NULL under certain circumstances, this
+function is garantied to never ever return NULL, but always return a
+valid character pointer with the absolute path to the user's home directory.
+
+The returned string is owned by libexpidus1util and must not be freed by
+the caller.</doc>
+      <source-position filename="expidus-miscutils.h" line="42"/>
+      <return-value transfer-ownership="none">
+        <doc xml:space="preserve"
+             filename="expidus-miscutils.c"
+             line="183">the path to the current user's home directory.</doc>
+        <type name="utf8" c:type="const gchar*"/>
+      </return-value>
+    </function>
+    <function name="get_homefile_r"
+              c:identifier="expidus_get_homefile_r"
+              introspectable="0">
+      <doc xml:space="preserve"
+           filename="expidus-miscutils.c"
+           line="198">Similar in functionality to #expidus_get_homefile, but uses a user
+defined @buffer instead of allocating a new buffer.
+
+expidus_get_homefile_r uses safe string operations, that says, it garanties
+that the resulting string is always zero terminated, as long as the
+@length is greater than zero.</doc>
+      <source-position filename="expidus-miscutils.h" line="44"/>
+      <return-value transfer-ownership="full">
+        <doc xml:space="preserve"
+             filename="expidus-miscutils.c"
+             line="212">pointer to @buffer.</doc>
+        <type name="utf8" c:type="gchar*"/>
+      </return-value>
+      <parameters>
+        <parameter name="buffer" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-miscutils.c"
+               line="200">pointer to a user provided destination buffer.</doc>
+          <type name="utf8" c:type="gchar*"/>
+        </parameter>
+        <parameter name="length" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-miscutils.c"
+               line="201">size of @buffer in bytes.</doc>
+          <type name="gsize" c:type="size_t"/>
+        </parameter>
+        <parameter name="format" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-miscutils.c"
+               line="202">printf style format string.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="..." transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-miscutils.c"
+               line="203">the arguments to substitute in the output.</doc>
+          <varargs/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="get_license_text" c:identifier="expidus_get_license_text">
+      <doc xml:space="preserve"
+           filename="expidus-license.c"
+           line="111">Returns the text of the software license specified in the
+@license_type translated to the current language. If no
+translation is available, the english license text will
+be returned.</doc>
+      <source-position filename="expidus-license.h" line="46"/>
+      <return-value transfer-ownership="none">
+        <doc xml:space="preserve"
+             filename="expidus-license.c"
+             line="120">the license text for @license_type.</doc>
+        <type name="utf8" c:type="const gchar*"/>
+      </return-value>
+      <parameters>
+        <parameter name="license_type" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-license.c"
+               line="113">an #ExpidusLicenseTextType.</doc>
+          <type name="LicenseTextType" c:type="ExpidusLicenseTextType"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="get_path_localized"
+              c:identifier="expidus_get_path_localized">
+      <doc xml:space="preserve"
+           filename="expidus-i18n.c"
+           line="271">@paths is a ':'-separated list of pathnames.
+
+ %F  - The @filename
+ %L  - The language string, as returned by
+     setlocale(LC_MESSAGES, NULL)
+ %l  - The language component of the language string
+ %N  - application name
+
+Example paths:
+
+ /usr/local/lib/%L/%F:/usr/local/share/%N/%l/%F</doc>
+      <source-position filename="expidus-i18n.h" line="82"/>
+      <return-value transfer-ownership="full">
+        <type name="utf8" c:type="gchar*"/>
+      </return-value>
+      <parameters>
+        <parameter name="dst" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-i18n.c"
+               line="273">destination buffer.</doc>
+          <type name="utf8" c:type="gchar*"/>
+        </parameter>
+        <parameter name="size" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-i18n.c"
+               line="274">size of @dst in bytes.</doc>
+          <type name="gsize" c:type="gsize"/>
+        </parameter>
+        <parameter name="paths" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-i18n.c"
+               line="275">the path</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="filename" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-i18n.c"
+               line="276">the filename</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="test" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-i18n.c"
+               line="277">test</doc>
+          <type name="GLib.FileTest" c:type="GFileTest"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="get_userdir" c:identifier="expidus_get_userdir">
+      <doc xml:space="preserve"
+           filename="expidus-miscutils.c"
+           line="229">Safe way to retrieve the path to the user's ".expidus1" directory. The path
+to the current user's ".expidus1" directory is either taken from the
+environment variable XFCE4HOME if defined, or if unset, is gained by
+concatenating the path to the user's home directory and the ".expidus1".
+That says, it will, by default, return the path "$HOME/.expidus1", where
+$HOME is replaced with the absolute path to the user's home directory.
+
+The returned string is managed by libexpidus1util and must not be freed by
+the caller.</doc>
+      <source-position filename="expidus-miscutils.h" line="49"/>
+      <return-value transfer-ownership="none">
+        <doc xml:space="preserve"
+             filename="expidus-miscutils.c"
+             line="242">the path to the current user's ".expidus1" directory.</doc>
+        <type name="utf8" c:type="const gchar*"/>
+      </return-value>
+    </function>
+    <function name="get_userfile_r"
+              c:identifier="expidus_get_userfile_r"
+              introspectable="0">
+      <source-position filename="expidus-miscutils.h" line="51"/>
+      <return-value transfer-ownership="full">
+        <doc xml:space="preserve"
+             filename="expidus-miscutils.c"
+             line="270">pointer to @buffer.</doc>
+        <type name="utf8" c:type="gchar*"/>
+      </return-value>
+      <parameters>
+        <parameter name="buffer" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-miscutils.c"
+               line="265">user provided destination buffer.</doc>
+          <type name="utf8" c:type="gchar*"/>
+        </parameter>
+        <parameter name="length" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-miscutils.c"
+               line="266">size of @buffer in bytes.</doc>
+          <type name="gsize" c:type="size_t"/>
+        </parameter>
+        <parameter name="format" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-miscutils.c"
+               line="267">printf style format string.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="..." transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-miscutils.c"
+               line="268">arguments to substitute in the output.</doc>
+          <varargs/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="gethostname" c:identifier="expidus_gethostname">
+      <doc xml:space="preserve"
+           filename="expidus-miscutils.c"
+           line="287">Portable way to query the hostname of the node running the process. This
+function does not ever return %NULL, but always returns a string containing
+the current node's hostname.</doc>
+      <source-position filename="expidus-miscutils.h" line="88"/>
+      <return-value transfer-ownership="full">
+        <doc xml:space="preserve"
+             filename="expidus-miscutils.c"
+             line="294">the current node's hostname. The string has to be freed
+              by the caller using g_free().</doc>
+        <type name="utf8" c:type="gchar*"/>
+      </return-value>
+    </function>
+    <function name="locale_match"
+              c:identifier="expidus_locale_match"
+              version="4.2">
+      <doc xml:space="preserve"
+           filename="expidus-i18n.c"
+           line="452">The locale is of the general form LANG_COUNTRY.ENCODING @ MODIFIER, where
+each of COUNTRY, ENCODING and MODIFIER can be absent.
+
+The match is done by actually removing the rightmost element one by one. This
+is not entirely according to the freedesktop.org specification, but much easier.
+Will probably be fixed in the future.</doc>
+      <source-position filename="expidus-i18n.h" line="91"/>
+      <return-value transfer-ownership="none">
+        <doc xml:space="preserve"
+             filename="expidus-i18n.c"
+             line="464">an integer value indicating the level of matching, where
+              the constant #EXPIDUS_LOCALE_FULL_MATCH indicates a full match
+              and #EXPIDUS_LOCALE_NO_MATCH means no match. Every other value
+              indicates a partial match, the higher the value, the better
+              the match. You should not rely on any specific value besides
+              the constants #EXPIDUS_LOCALE_FULL_MATCH and #EXPIDUS_LOCALE_NO_MATCH,
+              since the range of returned values may change in the future.</doc>
+        <type name="guint" c:type="guint"/>
+      </return-value>
+      <parameters>
+        <parameter name="locale1" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-i18n.c"
+               line="454">the current locale value as returned by setlocale(LC_MESSAGES,%NULL).</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="locale2" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-i18n.c"
+               line="455">the locale value to match against.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="mkdirhier"
+              c:identifier="expidus_mkdirhier"
+              version="4.2"
+              throws="1">
+      <doc xml:space="preserve"
+           filename="expidus-fileutils.c"
+           line="54">Creates the specified directory @whole_path, but unlike the mkdir()
+function from the standard C library, if any of the parent directories
+of the @whole_path do not exists, they are created as well.
+
+If the directory specified by @whole_path already exists, this function
+performs no operation and simply returns %TRUE.</doc>
+      <source-position filename="expidus-fileutils.h" line="33"/>
+      <return-value transfer-ownership="none">
+        <doc xml:space="preserve"
+             filename="expidus-fileutils.c"
+             line="68">%TRUE on success, else %FALSE.</doc>
+        <type name="gboolean" c:type="gboolean"/>
+      </return-value>
+      <parameters>
+        <parameter name="whole_path" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-fileutils.c"
+               line="56">path to the directory to create.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="mode" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-fileutils.c"
+               line="57">file permissions to use for the newly created directories.</doc>
+          <type name="gulong" c:type="gulong"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="posix_signal_handler_init"
+              c:identifier="expidus_posix_signal_handler_init"
+              throws="1">
+      <doc xml:space="preserve"
+           filename="expidus-posix-signal-handler.c"
+           line="126">Initializes the POSIX signal handler system.  Must be called
+before setting any POSIX signal handlers.</doc>
+      <source-position filename="expidus-posix-signal-handler.h" line="39"/>
+      <return-value transfer-ownership="none">
+        <doc xml:space="preserve"
+             filename="expidus-posix-signal-handler.c"
+             line="133">%TRUE on success, %FALSE on failure, in which case
+         @error will be set.</doc>
+        <type name="gboolean" c:type="gboolean"/>
+      </return-value>
+    </function>
+    <function name="posix_signal_handler_restore_handler"
+              c:identifier="expidus_posix_signal_handler_restore_handler">
+      <doc xml:space="preserve"
+           filename="expidus-posix-signal-handler.c"
+           line="255">Restores the default handler for @signal.</doc>
+      <source-position filename="expidus-posix-signal-handler.h" line="46"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="signal" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-posix-signal-handler.c"
+               line="257">A POSIX signal id number.</doc>
+          <type name="gint" c:type="gint"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="posix_signal_handler_set_handler"
+              c:identifier="expidus_posix_signal_handler_set_handler"
+              throws="1">
+      <doc xml:space="preserve"
+           filename="expidus-posix-signal-handler.c"
+           line="192">Sets @handler to be called whenever @signal is caught by the
+application.  The @user_data parameter will be passed as an argument
+to @handler.</doc>
+      <source-position filename="expidus-posix-signal-handler.h" line="42"/>
+      <return-value transfer-ownership="none">
+        <doc xml:space="preserve"
+             filename="expidus-posix-signal-handler.c"
+             line="203">%TRUE on success, %FALSE otherwise, in which case
+         @error will be set.</doc>
+        <type name="gboolean" c:type="gboolean"/>
+      </return-value>
+      <parameters>
+        <parameter name="signal" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-posix-signal-handler.c"
+               line="194">A POSIX signal id number.</doc>
+          <type name="gint" c:type="gint"/>
+        </parameter>
+        <parameter name="handler"
+                   transfer-ownership="none"
+                   scope="call"
+                   closure="2">
+          <doc xml:space="preserve"
+               filename="expidus-posix-signal-handler.c"
+               line="195">A callback function.</doc>
+          <type name="PosixSignalHandler" c:type="ExpidusPosixSignalHandler"/>
+        </parameter>
+        <parameter name="user_data"
+                   transfer-ownership="none"
+                   nullable="1"
+                   allow-none="1">
+          <doc xml:space="preserve"
+               filename="expidus-posix-signal-handler.c"
+               line="196">Arbitrary data that will be passed to @handler.</doc>
+          <type name="gpointer" c:type="gpointer"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="posix_signal_handler_shutdown"
+              c:identifier="expidus_posix_signal_handler_shutdown">
+      <doc xml:space="preserve"
+           filename="expidus-posix-signal-handler.c"
+           line="164">Frees all memory associated with the POSIX signal handling system
+and restores all default signal handlers.</doc>
+      <source-position filename="expidus-posix-signal-handler.h" line="40"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+    </function>
+    <function name="rc_config_open"
+              c:identifier="expidus_rc_config_open"
+              moved-to="Rc.config_open"
+              version="4.2">
+      <doc xml:space="preserve"
+           filename="expidus-rc.c"
+           line="154">If @readonly is %TRUE parsing is generally faster, because only untranslated
+entries and entries that match the current locale will be loaded. Also if
+you pass %TRUE for @readonly, #expidus_rc_config will fail if @resource
+does not reference a regular file.
+
+It is no error if @readonly is %FALSE and the file referenced by @resource
+does not exists. In this case you'll start with a fresh config, which contains
+only the default group and no entries.</doc>
+      <source-position filename="expidus-rc.h" line="45"/>
+      <return-value transfer-ownership="full">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="169">the newly created #ExpidusRc object, or %NULL on error.</doc>
+        <type name="Rc" c:type="ExpidusRc*"/>
+      </return-value>
+      <parameters>
+        <parameter name="type" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-rc.c"
+               line="156">The resource type being opened</doc>
+          <type name="ResourceType" c:type="ExpidusResourceType"/>
+        </parameter>
+        <parameter name="resource" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-rc.c"
+               line="157">The resource name to open</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="readonly" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-rc.c"
+               line="158">whether to open @resource readonly.</doc>
+          <type name="gboolean" c:type="gboolean"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="rc_simple_open"
+              c:identifier="expidus_rc_simple_open"
+              moved-to="Rc.simple_open"
+              version="4.2">
+      <doc xml:space="preserve"
+           filename="expidus-rc.c"
+           line="109">Parses the resource config file specified by @filename.
+
+If @readonly is %TRUE parsing is generally faster, because only untranslated
+entries and entries that match the current locale will be loaded. Also if
+you pass %TRUE for @readonly, #expidus_rc_simple_open will fail if @filename
+does not reference a regular file.
+
+It is no error if @readonly is %FALSE and the file referenced by @filename
+does not exists. In this case you'll start with a fresh config, which contains
+only the default group and no entries.</doc>
+      <source-position filename="expidus-rc.h" line="42"/>
+      <return-value transfer-ownership="full">
+        <doc xml:space="preserve"
+             filename="expidus-rc.c"
+             line="125">the newly created #ExpidusRc object, or %NULL on error.</doc>
+        <type name="Rc" c:type="ExpidusRc*"/>
+      </return-value>
+      <parameters>
+        <parameter name="filename" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-rc.c"
+               line="111">name of the filename to open.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="readonly" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-rc.c"
+               line="112">whether to open @filename readonly.</doc>
+          <type name="gboolean" c:type="gboolean"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="resource_dirs"
+              c:identifier="expidus_resource_dirs"
+              version="4.2">
+      <doc xml:space="preserve"
+           filename="expidus-resource.c"
+           line="406">Queries the list of possible directories for the specified @type. The
+first element of the list is always the save location for @type. None
+of the directories returned in the list are garantied to exist.
+
+This function should be rarely used. You should consider using
+expidus_resource_lookup(), expidus_resource_lookup_dirs() or
+expidus_resource_match() instead.
+
+The returned list must be freed using g_strfreev().</doc>
+      <source-position filename="expidus-resource.h" line="60"/>
+      <return-value transfer-ownership="full">
+        <doc xml:space="preserve"
+             filename="expidus-resource.c"
+             line="420">list of possible directories for @type.</doc>
+        <array c:type="gchar**">
+          <type name="utf8"/>
+        </array>
+      </return-value>
+      <parameters>
+        <parameter name="type" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-resource.c"
+               line="408">type of the resource.</doc>
+          <type name="ResourceType" c:type="ExpidusResourceType"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="resource_lookup"
+              c:identifier="expidus_resource_lookup"
+              version="4.2">
+      <doc xml:space="preserve"
+           filename="expidus-resource.c"
+           line="458">Looks for a resource of the specified @type whose relative path matches
+@filename. @filename can either reference a regular file, in which case
+it must not end with a slash character ('/'), or a directory, when
+@filename contains a trailing slash character ('/').
+
+The caller is responsible to free the returned string using g_free()
+when no longer needed.</doc>
+      <source-position filename="expidus-resource.h" line="61"/>
+      <return-value transfer-ownership="full">
+        <doc xml:space="preserve"
+             filename="expidus-resource.c"
+             line="471">the absolute path to the first file or directory in the
+              search path, that matches @filename or %NULL if no such
+              file or directory could be found.</doc>
+        <type name="utf8" c:type="gchar*"/>
+      </return-value>
+      <parameters>
+        <parameter name="type" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-resource.c"
+               line="460">type of resource to lookup.</doc>
+          <type name="ResourceType" c:type="ExpidusResourceType"/>
+        </parameter>
+        <parameter name="filename" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-resource.c"
+               line="461">relative filename of the resource, e.g. "xfwm4/xfwmrc".</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="resource_lookup_all"
+              c:identifier="expidus_resource_lookup_all"
+              version="4.2">
+      <doc xml:space="preserve"
+           filename="expidus-resource.c"
+           line="511">Similar to expidus_resource_lookup(), but returns all resource of the specified @type,
+that whose name is @filename.
+
+The caller is responsible to free the returned string array using g_strfreev()
+when no longer needed.</doc>
+      <source-position filename="expidus-resource.h" line="63"/>
+      <return-value transfer-ownership="full">
+        <doc xml:space="preserve"
+             filename="expidus-resource.c"
+             line="524">list of possible resources for @type.</doc>
+        <array c:type="gchar**">
+          <type name="utf8"/>
+        </array>
+      </return-value>
+      <parameters>
+        <parameter name="type" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-resource.c"
+               line="513">type of the resource to lookup.</doc>
+          <type name="ResourceType" c:type="ExpidusResourceType"/>
+        </parameter>
+        <parameter name="filename" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-resource.c"
+               line="514">relative file path. If @filename contains a trailing slash character
+            it is taken to reference a directory, else it is taken to reference
+            a file.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="resource_match"
+              c:identifier="expidus_resource_match"
+              version="4.2">
+      <doc xml:space="preserve"
+           filename="expidus-resource.c"
+           line="579">Tries to find all resources with the specified @type. The function will
+look into all specified directories and return all filenames in these
+directories. The returned filenames are given relative the base directories
+specified by @type.
+
+If @pattern contains a trailing slash, #expidus_resource_match looks only for
+directories that match @pattern, else it'll only look for regular files. In
+case you are looking for directories, the returned entries will contain a
+trailing slash as well, so you can easily use them with other resource
+functions like #expidus_resource_lookup or #expidus_resource_save_location.
+
+Example: expidus_resource_match (EXPIDUS_RESOURCE_CONFIG, "foo/bar*") will probably
+return ("foo/bar", "foo/barbaz", ...).</doc>
+      <source-position filename="expidus-resource.h" line="65"/>
+      <return-value transfer-ownership="full">
+        <doc xml:space="preserve"
+             filename="expidus-resource.c"
+             line="600">string array of all the relative paths whose names matches the
+              given @pattern. The return value has to be freed using
+              g_strfreev() when no longer needed.</doc>
+        <array c:type="gchar**">
+          <type name="utf8"/>
+        </array>
+      </return-value>
+      <parameters>
+        <parameter name="type" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-resource.c"
+               line="581">type of the resource to locate directories for.</doc>
+          <type name="ResourceType" c:type="ExpidusResourceType"/>
+        </parameter>
+        <parameter name="pattern" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-resource.c"
+               line="582">only accept filenames that fit to the pattern. The pattern
+             needs to be a valid GPattern.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="unique" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-resource.c"
+               line="584">if %TRUE, only return items which have unique suffixes.</doc>
+          <type name="gboolean" c:type="gboolean"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="resource_match_custom"
+              c:identifier="expidus_resource_match_custom"
+              version="4.2">
+      <doc xml:space="preserve"
+           filename="expidus-resource.c"
+           line="638">Yet to be implemented!</doc>
+      <source-position filename="expidus-resource.h" line="68"/>
+      <return-value transfer-ownership="full">
+        <doc xml:space="preserve"
+             filename="expidus-resource.c"
+             line="648">The caller is responsible to free
+         the returned string array using g_strfreev() when no longer needed.</doc>
+        <array c:type="gchar**">
+          <type name="utf8"/>
+        </array>
+      </return-value>
+      <parameters>
+        <parameter name="type" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-resource.c"
+               line="640">type of the resource to locate directories for.</doc>
+          <type name="ResourceType" c:type="ExpidusResourceType"/>
+        </parameter>
+        <parameter name="unique" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-resource.c"
+               line="641">if %TRUE, only return items which have unique suffixes.</doc>
+          <type name="gboolean" c:type="gboolean"/>
+        </parameter>
+        <parameter name="func"
+                   transfer-ownership="none"
+                   scope="call"
+                   closure="3">
+          <doc xml:space="preserve"
+               filename="expidus-resource.c"
+               line="642">callback to determine if there was a match</doc>
+          <type name="MatchFunc" c:type="ExpidusMatchFunc"/>
+        </parameter>
+        <parameter name="user_data"
+                   transfer-ownership="none"
+                   nullable="1"
+                   allow-none="1">
+          <doc xml:space="preserve"
+               filename="expidus-resource.c"
+               line="643">caller defined data</doc>
+          <type name="gpointer" c:type="gpointer"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="resource_pop_path"
+              c:identifier="expidus_resource_pop_path"
+              version="4.2">
+      <doc xml:space="preserve"
+           filename="expidus-resource.c"
+           line="713">Undoes the effect of the latest call to expidus_resource_push_path(). You
+should take special care to call expidus_resource_pop_path() exactly same
+times as expidus_resource_push_path(), everything else might result in
+unwanted and maybe even undefined behaviour. You have been warned!</doc>
+      <source-position filename="expidus-resource.h" line="74"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="type" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-resource.c"
+               line="715">type of the resource which search list should be shrinked.</doc>
+          <type name="ResourceType" c:type="ExpidusResourceType"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="resource_push_path"
+              c:identifier="expidus_resource_push_path"
+              version="4.2">
+      <doc xml:space="preserve"
+           filename="expidus-resource.c"
+           line="683">Appends @path to the search path list for @type. This function was
+written primary for use within modules in larger applications, for example
+MCS plugins.
+
+For example, if you need to add a specific path to the search path list
+in your MCS, you should call expidus_resource_push_path() prior to calling
+one of the resource search functions and call expidus_resource_pop_path()
+right afterwards.</doc>
+      <source-position filename="expidus-resource.h" line="72"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="type" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-resource.c"
+               line="685">type of the resource which search list should be expanded.</doc>
+          <type name="ResourceType" c:type="ExpidusResourceType"/>
+        </parameter>
+        <parameter name="path" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-resource.c"
+               line="686">search path to add.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="resource_save_location"
+              c:identifier="expidus_resource_save_location"
+              version="4.2">
+      <doc xml:space="preserve"
+           filename="expidus-resource.c"
+           line="743">If @relpath contains a trailing slash ('/') character, expidus_resource_save_location()
+finds the directory to save files into for the given type in the user's
+home directory. All directories needed (including those given by
+@relpath) will be created on demand if @create if %TRUE.
+
+If @relpath does not end with a slash ('/') character, it is taken to be
+the name of a file to return the save location for. All the directories
+needed will be created on demand if @create is %TRUE.
+
+Specifying %NULL or the empty string for @relpath allows you to discover
+the base path for saving files of the specified @type, though normally
+you should not need this.</doc>
+      <source-position filename="expidus-resource.h" line="75"/>
+      <return-value transfer-ownership="full">
+        <doc xml:space="preserve"
+             filename="expidus-resource.c"
+             line="762">the path where resources of the specified @type should be
+              saved or %NULL on error. The returned string should be freed
+              when no longer needed.</doc>
+        <type name="utf8" c:type="gchar*"/>
+      </return-value>
+      <parameters>
+        <parameter name="type" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-resource.c"
+               line="745">type of location to return.</doc>
+          <type name="ResourceType" c:type="ExpidusResourceType"/>
+        </parameter>
+        <parameter name="relpath" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-resource.c"
+               line="746">relative path of the resource.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="create" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-resource.c"
+               line="747">whether to create missing directory.</doc>
+          <type name="gboolean" c:type="gboolean"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function-macro name="stack_free"
+                    c:identifier="expidus_stack_free"
+                    introspectable="0">
+      <doc xml:space="preserve"
+           filename="expidus-generics.h"
+           line="126">Frees a stack, that was allocated using #expidus_stack_new.</doc>
+      <source-position filename="expidus-generics.h" line="134"/>
+      <parameters>
+        <parameter name="stack">
+          <doc xml:space="preserve"
+               filename="expidus-generics.h"
+               line="128">A stack object.</doc>
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="stack_new"
+                    c:identifier="expidus_stack_new"
+                    introspectable="0">
+      <doc xml:space="preserve"
+           filename="expidus-generics.h"
+           line="83">Creates a new instance of @StackType and returns a pointer to the newly
+created instance. For example, imagine you declared a type %MyDoubleStack
+as shown above, you can instantiate this type with
+
+|[&lt;!-- language="C" --&gt;
+MyDoubleStack *my_stack = expidus_stack_new (MyDoubleStack);
+]|</doc>
+      <source-position filename="expidus-generics.h" line="99"/>
+      <parameters>
+        <parameter name="StackType">
+          <doc xml:space="preserve"
+               filename="expidus-generics.h"
+               line="85">Type of stack declared with #EXPIDUS_GENERIC_STACK.</doc>
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="stack_pop"
+                    c:identifier="expidus_stack_pop"
+                    introspectable="0">
+      <doc xml:space="preserve"
+           filename="expidus-generics.h"
+           line="159">Removes the top element from @stack.</doc>
+      <source-position filename="expidus-generics.h" line="166"/>
+      <parameters>
+        <parameter name="stack">
+          <doc xml:space="preserve"
+               filename="expidus-generics.h"
+               line="161">A stack object.</doc>
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="stack_push"
+                    c:identifier="expidus_stack_push"
+                    introspectable="0">
+      <doc xml:space="preserve"
+           filename="expidus-generics.h"
+           line="174">Pushes a new @value on top of @stack.</doc>
+      <source-position filename="expidus-generics.h" line="182"/>
+      <parameters>
+        <parameter name="stack">
+          <doc xml:space="preserve"
+               filename="expidus-generics.h"
+               line="176">A stack object.</doc>
+        </parameter>
+        <parameter name="value">
+          <doc xml:space="preserve"
+               filename="expidus-generics.h"
+               line="177">the value to push</doc>
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="stack_top"
+                    c:identifier="expidus_stack_top"
+                    introspectable="0">
+      <doc xml:space="preserve"
+           filename="expidus-generics.h"
+           line="142">Removes the top element from @stack.</doc>
+      <source-position filename="expidus-generics.h" line="150"/>
+      <parameters>
+        <parameter name="stack">
+          <doc xml:space="preserve"
+               filename="expidus-generics.h"
+               line="144">A stack object.</doc>
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function name="textdomain" c:identifier="expidus_textdomain">
+      <doc xml:space="preserve"
+           filename="expidus-i18n.c"
+           line="145">Sets up the translations for @package.</doc>
+      <source-position filename="expidus-i18n.h" line="68"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="package" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-i18n.c"
+               line="147">the package name.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="localedir" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-i18n.c"
+               line="148">the @package&lt;!----&gt;s locale directory.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="encoding" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-i18n.c"
+               line="149">the encoding to use the @package&lt;!----&gt;s translations
+             or %NULL to use "UTF-8".</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="utf8_remove_controls"
+              c:identifier="expidus_utf8_remove_controls"
+              version="4.2">
+      <doc xml:space="preserve"
+           filename="expidus-utf8.c"
+           line="41">Removes all control characters from @str up to @end or up to
+@max_len characters (note that characters does not mean bytes with
+UTF-8), where both @str and @max_len may not be given.
+
+Control characters are replaced in @str by whitespaces, no new string
+will be allocated. The operation is done in-place.</doc>
+      <source-position filename="expidus-utf8.h" line="34"/>
+      <return-value transfer-ownership="full">
+        <doc xml:space="preserve"
+             filename="expidus-utf8.c"
+             line="54">pointer to @str or %NULL on error.</doc>
+        <type name="utf8" c:type="gchar*"/>
+      </return-value>
+      <parameters>
+        <parameter name="str" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-utf8.c"
+               line="43">target string.</doc>
+          <type name="utf8" c:type="gchar*"/>
+        </parameter>
+        <parameter name="max_len" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-utf8.c"
+               line="44">max characters to check or -1 for no character limit.</doc>
+          <type name="gssize" c:type="gssize"/>
+        </parameter>
+        <parameter name="end" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-utf8.c"
+               line="45">pointer to the endpoint in @str or %NULL for no endpoint.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="utf8_strndup"
+              c:identifier="expidus_utf8_strndup"
+              version="4.3">
+      <doc xml:space="preserve"
+           filename="expidus-utf8.c"
+           line="77">Duplicates the @src string up to @max_len characters
+(note that characters does not mean bytes with UTF-8).
+
+The caller is responsible to free the returned string
+using g_free() when no longer needed.</doc>
+      <source-position filename="expidus-utf8.h" line="38"/>
+      <return-value transfer-ownership="full">
+        <doc xml:space="preserve"
+             filename="expidus-utf8.c"
+             line="88">pointer to the newly allocated string.</doc>
+        <type name="utf8" c:type="gchar*"/>
+      </return-value>
+      <parameters>
+        <parameter name="src" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-utf8.c"
+               line="79">target string.</doc>
+          <type name="utf8" c:type="const gchar*"/>
+        </parameter>
+        <parameter name="max_len" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="expidus-utf8.c"
+               line="80">max characters to duplicate or -1 for no character limit.</doc>
+          <type name="gssize" c:type="gssize"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="version_string"
+              c:identifier="expidus_version_string"
+              version="4.2">
+      <doc xml:space="preserve"
+           filename="expidus-miscutils.c"
+           line="155">Queries the version string of the installed Expidus desktop environment.</doc>
+      <source-position filename="expidus-miscutils.h" line="40"/>
+      <return-value transfer-ownership="none">
+        <doc xml:space="preserve"
+             filename="expidus-miscutils.c"
+             line="160">the overall version information of the installed Expidus desktop.</doc>
+        <type name="utf8" c:type="const gchar*"/>
+      </return-value>
+    </function>
+  </namespace>
+</repository>

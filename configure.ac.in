@@ -1,9 +1,9 @@
 dnl $Id$
 dnl
 dnl Copyright (c) 2002-2019
-dnl         The Xfce development team. All rights reserved.
+dnl         The Expidus development team. All rights reserved.
 dnl
-dnl Written for Xfce by Benedikt Meurer <benny@expidus.org>, Jasper
+dnl Written for Expidus by Benedikt Meurer <benny@expidus.org>, Jasper
 dnl Huijsmans <jasper@expidus.org> and Olivier Fourdan <fourdan@expidus.org>.
 dnl
 
@@ -20,7 +20,7 @@ m4_define([libexpidus1util_version_tag], [git])
 m4_define([libexpidus1util_version], [libexpidus1util_version_major().libexpidus1util_version_minor().libexpidus1util_version_micro()ifelse(libexpidus1util_version_nano(), [], [], [.libexpidus1util_version_nano()])ifelse(libexpidus1util_version_tag(), [git], [libexpidus1util_version_tag()-libexpidus1util_version_build()], [])])
 
 dnl **************************************************************
-dnl *** Overall Xfce version, modify this when making releases ***
+dnl *** Overall Expidus version, modify this when making releases ***
 dnl **************************************************************
 m4_define([expidus_version_string], [4.16])
 
@@ -38,7 +38,7 @@ dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
 AC_COPYRIGHT([Copyright (c) 2002-2019
-        The Xfce development team. All rights reserved.])
+        The Expidus development team. All rights reserved.])
 AC_INIT([libexpidus1util], [libexpidus1util_version], [expidus1-dev@expidus.org])
 AC_PREREQ([2.69])
 AC_REVISION([libexpidus1util_version_build])
@@ -60,7 +60,7 @@ LIBEXPIDUS1UTIL_VERINFO=libexpidus1util_verinfo()
 AC_SUBST([LIBEXPIDUS1UTIL_VERINFO])
 
 dnl **********************************
-dnl *** Subst overall Xfce version ***
+dnl *** Subst overall Expidus version ***
 dnl **********************************
 AC_DEFINE([EXPIDUS_VERSION_STRING], ["expidus_version_string"],
   [Overall ExpidusOS version])

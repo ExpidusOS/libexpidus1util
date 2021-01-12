@@ -1,5 +1,5 @@
 # Amharic translation to libexpidus1util.
-# Copyright (C) 2002-2007 The Xfce development team.
+# Copyright (C) 2002-2007 The Expidus development team.
 # This file is distributed under the same license as the libexpidus1util package.
 # Tegegne Tefera <tefera@mekuria.com>, 2007.
 #

@@ -89,7 +89,7 @@ INTROSPECTION_SCANNER_ENV = CC="$(CC)"
 INTROSPECTION_SCANNER_ARGS = \
 	--add-include-path=$(srcdir) \
 	--warn-all \
-	--identifier-prefix=Xfce \
+	--identifier-prefix=Expidus \
 	--identifier-prefix=expidus \
 	--identifier-prefix=libexpidus \
 	-DLIBEXPIDUS1UTIL_COMPILATION \

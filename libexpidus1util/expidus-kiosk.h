@@ -1,5 +1,7 @@
-/*
- * Copyright (c) 2007 Brian Tarricone <bjt23@cornell.edu>
+/* $Id$ */
+/*-
+ * Copyright (c) 2003-2006 Benedikt Meurer <benny@expidus.org>
+ * All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -21,30 +23,22 @@
 #error "Only <libexpidus1util/libexpidus1util.h> can be included directly, this file may disappear or change contents"
 #endif
 
-#ifndef __EXPIDUS_POSIX_SIGNAL_HANDLER_H__
-#define __EXPIDUS_POSIX_SIGNAL_HANDLER_H__
+#ifndef __EXPIDUS_KIOSK_H__
+#define __EXPIDUS_KIOSK_H__
 
 #include <glib.h>
+#include <glib-object.h>
 
 G_BEGIN_DECLS
 
-/**
- * XfcePosixSignalHandler:
- * @signal: The signal that was caught.
- * @user_data: The @user_data parameter passed when the handler was registered.
- */
+#define EXPIDUS_TYPE_KIOSK expidus_kiosk_get_type ()
+G_DECLARE_FINAL_TYPE (ExpidusKiosk, expidus_kiosk, EXPIDUS, KIOSK, GObject)
 
-typedef void (*XfcePosixSignalHandler)(gint signal, gpointer user_data);
-
-gboolean expidus_posix_signal_handler_init(GError **error);
-void expidus_posix_signal_handler_shutdown(void);
-
-gboolean expidus_posix_signal_handler_set_handler(gint signal,
-                                               XfcePosixSignalHandler handler,
-                                               gpointer user_data,
-                                               GError **error);
-void expidus_posix_signal_handler_restore_handler(gint signal);
+ExpidusKiosk *expidus_kiosk_new   (const gchar     *module) G_GNUC_MALLOC;
+gboolean   expidus_kiosk_query (const ExpidusKiosk *kiosk,
+                             const gchar     *capability);
+void       expidus_kiosk_free  (ExpidusKiosk       *kiosk);
 
 G_END_DECLS
 
-#endif  /* __EXPIDUS_POSIX_SIGNAL_HANDLER_H__ */
+#endif /* !__EXPIDUS_KIOSK_H__ */

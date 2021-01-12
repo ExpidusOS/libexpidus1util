@@ -30,7 +30,7 @@ expidus_locale_match
 
 
 <SECTION>
-<TITLE>Xfce Generics</TITLE>
+<TITLE>Expidus Generics</TITLE>
 <FILE>expidus-generics</FILE>
 EXPIDUS_GENERIC_STACK
 expidus_stack_new
@@ -42,9 +42,9 @@ expidus_stack_push
 
 
 <SECTION>
-<TITLE>Xfce Kiosk functions</TITLE>
+<TITLE>Expidus Kiosk functions</TITLE>
 <FILE>expidus-kiosk</FILE>
-XfceKiosk
+ExpidusKiosk
 expidus_kiosk_new
 expidus_kiosk_query
 expidus_kiosk_free
@@ -54,8 +54,8 @@ expidus_kiosk_free
 <SECTION>
 <TITLE>Resource lookup functions</TITLE>
 <FILE>expidus-resource</FILE>
-XfceResourceType
-XfceMatchFunc
+ExpidusResourceType
+ExpidusMatchFunc
 expidus_resource_dirs
 expidus_resource_lookup
 expidus_resource_lookup_all
@@ -69,7 +69,7 @@ expidus_resource_save_location
 <SECTION>
 <TITLE>Resource Config File Support</TITLE>
 <FILE>expidus-rc</FILE>
-XfceRc
+ExpidusRc
 expidus_rc_simple_open
 expidus_rc_config_open
 expidus_rc_close
@@ -119,7 +119,7 @@ expidus_mkdirhier
 EXPIDUS_LICENSE_BSD
 EXPIDUS_LICENSE_GPL
 EXPIDUS_LICENSE_LGPL
-XfceLicenseTextType
+ExpidusLicenseTextType
 expidus_get_license_text
 <SUBSECTION Private>
 expidus_license_text_type_get_type
@@ -145,7 +145,7 @@ expidus_expand_desktop_entry_field_codes
 <SECTION>
 <TITLE>POSIX Signal Handling</TITLE>
 <FILE>expidus-posix-signal-handler</FILE>
-XfcePosixSignalHandler
+ExpidusPosixSignalHandler
 expidus_posix_signal_handler_init
 expidus_posix_signal_handler_restore_handler
 expidus_posix_signal_handler_set_handler

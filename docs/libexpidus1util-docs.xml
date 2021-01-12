@@ -15,26 +15,26 @@
         <title>libexpidus1util Overview</title>
         <para>
             libexpidus1util is a general-purpose utility library
-            with core application support for the Xfce Desktop
+            with core application support for the Expidus Desktop
             Environment.
         </para>
     </chapter>
 
     <chapter id="libexpidus1util-fundamentals">
-        <title>Xfce Fundamentals</title>
+        <title>Expidus Fundamentals</title>
         <xi:include href="xml/libexpidus1util-config.xml"/>
         <xi:include href="xml/expidus-i18n.xml"/>
         <xi:include href="xml/expidus-license.xml"/>
     </chapter>
 
     <chapter id="libexpidus1util-core">
-        <title>Xfce Core Application support</title>
+        <title>Expidus Core Application support</title>
         <xi:include href="xml/expidus-kiosk.xml"/>
         <xi:include href="xml/expidus-posix-signal-handler.xml"/>
     </chapter>
 
     <chapter id="libexpidus1util-utilities">
-        <title>Xfce Utilities</title>
+        <title>Expidus Utilities</title>
         <xi:include href="xml/expidus-resource.xml"/>
         <xi:include href="xml/expidus-rc.xml"/>
         <xi:include href="xml/expidus-fileutils.xml"/>
@@ -43,7 +43,7 @@
     </chapter>
 
     <chapter id="libexpidus1util-datatypes">
-        <title>Xfce Data types</title>
+        <title>Expidus Data types</title>
         <xi:include href="xml/expidus-generics.xml"/>
     </chapter>
     <xi:include href="xml/annotation-glossary.xml"><xi:fallback /></xi:include>

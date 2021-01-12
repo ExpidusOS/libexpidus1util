@@ -21,12 +21,12 @@
 
 /**
  * SECTION:expidus-generics
- * @title: Xfce Generics
+ * @title: Expidus Generics
  * @short_description: Generic data types and related functions.
  * @stability: Stable
  * @include: libexpidus1util/libexpidus1util.h
  *
- * Xfce-dialogs are a collection of helper dialogs to display
+ * Expidus-dialogs are a collection of helper dialogs to display
  * the help dialog with link to the docs website, warning, info, and
  * error dialogs and more.
  *

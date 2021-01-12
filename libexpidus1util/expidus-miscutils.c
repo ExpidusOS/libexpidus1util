@@ -155,9 +155,9 @@ internal_get_file_r (const gchar *dir,
 /**
  * expidus_version_string:
  *
- * Queries the version string of the installed Xfce desktop environment.
+ * Queries the version string of the installed Expidus desktop environment.
  *
- * Return value: the overall version information of the installed Xfce desktop.
+ * Return value: the overall version information of the installed Expidus desktop.
  *
  * Since: 4.2
  */

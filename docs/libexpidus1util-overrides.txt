@@ -1,4 +1,4 @@
 <STRUCT>
-<NAME>XfceRc</NAME>
+<NAME>ExpidusRc</NAME>
 </STRUCT>
 

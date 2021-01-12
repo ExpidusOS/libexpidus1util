@@ -58,7 +58,7 @@ int
 main (int argc, char **argv)
 {
   const gchar *module;
-  XfceKiosk   *kiosk;
+  ExpidusKiosk   *kiosk;
   int          ch;
   int          n;
 
@@ -67,10 +67,10 @@ main (int argc, char **argv)
       switch (ch)
         {
         case 'v':
-          printf ("expidus1-kiosk-query %s (Xfce %s)\n\n"
+          printf ("expidus1-kiosk-query %s (Expidus %s)\n\n"
                   "Copyright (c) 2003-2004\n"
-                  "        The Xfce development team. All rights reserved.\n"
-                  "Written for Xfce by Benedikt Meurer <benny@expidus.org>.\n\n"
+                  "        The Expidus development team. All rights reserved.\n"
+                  "Written for Expidus by Benedikt Meurer <benny@expidus.org>.\n\n"
                   "Please report bugs to <%s>.\n",
                   PACKAGE_VERSION, expidus_version_string (), PACKAGE_BUGREPORT);
           return EXIT_SUCCESS;

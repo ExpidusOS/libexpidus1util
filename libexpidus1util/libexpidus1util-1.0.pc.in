@@ -4,7 +4,7 @@ libdir=@libdir@
 includedir=@includedir@
 
 Name: libexpidus1util
-Description: Utility library for the Xfce 4 desktop environment
+Description: Utility library for the Expidus 4 desktop environment
 Requires: glib-2.0
 Version: @VERSION@
 Libs: -L${libdir} -lexpidus1util

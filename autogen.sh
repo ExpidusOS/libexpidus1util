@@ -3,9 +3,9 @@
 # $Id$
 #
 # Copyright (c) 2002-2006
-#         The Xfce development team. All rights reserved.
+#         The Expidus development team. All rights reserved.
 #
-# Written for Xfce by Benedikt Meurer <benny@expidus.org>.
+# Written for Expidus by Benedikt Meurer <benny@expidus.org>.
 #
 # This library is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the Free
@@ -25,7 +25,7 @@
 
 (type xdt-autogen) >/dev/null 2>&1 || {
   cat >&2 <<EOF
-autogen.sh: You don't seem to have the Xfce development tools installed on
+autogen.sh: You don't seem to have the Expidus development tools installed on
             your system, which are required to build this software.
             Please install the expidus1-dev-tools package first, it is available
             from http://www.expidus.org/.

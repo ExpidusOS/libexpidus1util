@@ -23,22 +23,32 @@
 #error "Only <libexpidus1util/libexpidus1util.h> can be included directly, this file may disappear or change contents"
 #endif
 
-#ifndef __EXPIDUS_KIOSK_H__
-#define __EXPIDUS_KIOSK_H__
-
-#include <glib.h>
-#include <glib-object.h>
+#ifndef __EXPIDUS_LICENSE_H__
+#define __EXPIDUS_LICENSE_H__
 
 G_BEGIN_DECLS
 
-#define EXPIDUS_TYPE_KIOSK expidus_kiosk_get_type ()
-G_DECLARE_FINAL_TYPE (XfceKiosk, expidus_kiosk, XFCE, KIOSK, GObject)
+/**
+ * ExpidusLicenseTextType:
+ * @EXPIDUS_LICENSE_TEXT_BSD  : the BSD License.
+ * @EXPIDUS_LICENSE_TEXT_GPL  : the GNU General Public License.
+ * @EXPIDUS_LICENSE_TEXT_LGPL : the GNU Lesser General Public License.
+ *
+ * The license text to return from expidus_get_license_text().
+ **/
+typedef enum /*< enum >*/
+{
+  EXPIDUS_LICENSE_TEXT_BSD,
+  EXPIDUS_LICENSE_TEXT_GPL,
+  EXPIDUS_LICENSE_TEXT_LGPL,
+} ExpidusLicenseTextType;
 
-XfceKiosk *expidus_kiosk_new   (const gchar     *module) G_GNUC_MALLOC;
-gboolean   expidus_kiosk_query (const XfceKiosk *kiosk,
-                             const gchar     *capability);
-void       expidus_kiosk_free  (XfceKiosk       *kiosk);
+const gchar *expidus_get_license_text (ExpidusLicenseTextType license_type) G_GNUC_PURE;
+
+#define EXPIDUS_LICENSE_BSD  (expidus_get_license_text (EXPIDUS_LICENSE_TEXT_BSD))
+#define EXPIDUS_LICENSE_GPL  (expidus_get_license_text (EXPIDUS_LICENSE_TEXT_GPL))
+#define EXPIDUS_LICENSE_LGPL (expidus_get_license_text (EXPIDUS_LICENSE_TEXT_LGPL))
 
 G_END_DECLS
 
-#endif /* !__EXPIDUS_KIOSK_H__ */
+#endif /* !__EXPIDUS_LICENSE_H__ */

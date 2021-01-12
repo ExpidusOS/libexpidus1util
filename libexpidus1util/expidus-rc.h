@@ -31,74 +31,74 @@
 
 G_BEGIN_DECLS
 
-typedef struct _XfceRc XfceRc;
+typedef struct _ExpidusRc ExpidusRc;
 
 #define EXPIDUS_TYPE_RC       (expidus_rc_get_type ())
-#define EXPIDUS_RC(obj)       ((XfceRc *) (obj))
-#define EXPIDUS_RC_CONST(obj) ((const XfceRc *) (obj))
+#define EXPIDUS_RC(obj)       ((ExpidusRc *) (obj))
+#define EXPIDUS_RC_CONST(obj) ((const ExpidusRc *) (obj))
 
 GType        expidus_rc_get_type                (void);
 
-XfceRc*      expidus_rc_simple_open             (const gchar     *filename,
+ExpidusRc*      expidus_rc_simple_open             (const gchar     *filename,
                                               gboolean         readonly) G_GNUC_MALLOC G_GNUC_WARN_UNUSED_RESULT;
 
-XfceRc*      expidus_rc_config_open             (XfceResourceType type,
+ExpidusRc*      expidus_rc_config_open             (ExpidusResourceType type,
                                               const gchar     *resource,
                                               gboolean         readonly) G_GNUC_MALLOC G_GNUC_WARN_UNUSED_RESULT;
 
-void         expidus_rc_close                   (XfceRc *rc);
-void         expidus_rc_flush                   (XfceRc *rc);
-void         expidus_rc_rollback                (XfceRc *rc);
+void         expidus_rc_close                   (ExpidusRc *rc);
+void         expidus_rc_flush                   (ExpidusRc *rc);
+void         expidus_rc_rollback                (ExpidusRc *rc);
 
-gboolean     expidus_rc_is_dirty                (const XfceRc *rc) G_GNUC_WARN_UNUSED_RESULT;
-gboolean     expidus_rc_is_readonly             (const XfceRc *rc) G_GNUC_WARN_UNUSED_RESULT;
+gboolean     expidus_rc_is_dirty                (const ExpidusRc *rc) G_GNUC_WARN_UNUSED_RESULT;
+gboolean     expidus_rc_is_readonly             (const ExpidusRc *rc) G_GNUC_WARN_UNUSED_RESULT;
 
-const gchar* expidus_rc_get_locale              (const XfceRc *rc) G_GNUC_WARN_UNUSED_RESULT;
+const gchar* expidus_rc_get_locale              (const ExpidusRc *rc) G_GNUC_WARN_UNUSED_RESULT;
 
-gchar**      expidus_rc_get_groups              (const XfceRc *rc) G_GNUC_MALLOC G_GNUC_WARN_UNUSED_RESULT;
-gchar**      expidus_rc_get_entries             (const XfceRc *rc,
+gchar**      expidus_rc_get_groups              (const ExpidusRc *rc) G_GNUC_MALLOC G_GNUC_WARN_UNUSED_RESULT;
+gchar**      expidus_rc_get_entries             (const ExpidusRc *rc,
                                               const gchar  *group) G_GNUC_MALLOC G_GNUC_WARN_UNUSED_RESULT;
 
-void         expidus_rc_delete_group            (XfceRc       *rc,
+void         expidus_rc_delete_group            (ExpidusRc       *rc,
                                               const gchar  *group,
                                               gboolean      global);
-const gchar* expidus_rc_get_group               (const XfceRc *rc) G_GNUC_WARN_UNUSED_RESULT;
-gboolean     expidus_rc_has_group               (const XfceRc *rc,
+const gchar* expidus_rc_get_group               (const ExpidusRc *rc) G_GNUC_WARN_UNUSED_RESULT;
+gboolean     expidus_rc_has_group               (const ExpidusRc *rc,
                                               const gchar  *group) G_GNUC_WARN_UNUSED_RESULT;
-void         expidus_rc_set_group               (XfceRc       *rc,
+void         expidus_rc_set_group               (ExpidusRc       *rc,
                                               const gchar  *group);
 
-void         expidus_rc_delete_entry            (XfceRc       *rc,
+void         expidus_rc_delete_entry            (ExpidusRc       *rc,
                                               const gchar  *key,
                                               gboolean      global);
-gboolean     expidus_rc_has_entry               (const XfceRc *rc,
+gboolean     expidus_rc_has_entry               (const ExpidusRc *rc,
                                               const gchar  *key) G_GNUC_WARN_UNUSED_RESULT;
 
-const gchar* expidus_rc_read_entry              (const XfceRc *rc,
+const gchar* expidus_rc_read_entry              (const ExpidusRc *rc,
                                               const gchar  *key,
                                               const gchar  *fallback) G_GNUC_WARN_UNUSED_RESULT;
-const gchar* expidus_rc_read_entry_untranslated (const XfceRc *rc,
+const gchar* expidus_rc_read_entry_untranslated (const ExpidusRc *rc,
                                               const gchar  *key,
                                               const gchar  *fallback) G_GNUC_WARN_UNUSED_RESULT;
-gboolean     expidus_rc_read_bool_entry         (const XfceRc *rc,
+gboolean     expidus_rc_read_bool_entry         (const ExpidusRc *rc,
                                               const gchar  *key,
                                               gboolean      fallback) G_GNUC_WARN_UNUSED_RESULT;
-gint         expidus_rc_read_int_entry          (const XfceRc *rc,
+gint         expidus_rc_read_int_entry          (const ExpidusRc *rc,
                                               const gchar  *key,
                                               gint          fallback) G_GNUC_WARN_UNUSED_RESULT;
-gchar**      expidus_rc_read_list_entry         (const XfceRc *rc,
+gchar**      expidus_rc_read_list_entry         (const ExpidusRc *rc,
                                               const gchar  *key,
                                               const gchar  *delimiter) G_GNUC_MALLOC G_GNUC_WARN_UNUSED_RESULT;
-void         expidus_rc_write_entry             (XfceRc       *rc,
+void         expidus_rc_write_entry             (ExpidusRc       *rc,
                                               const gchar  *key,
                                               const gchar  *value);
-void         expidus_rc_write_bool_entry        (XfceRc       *rc,
+void         expidus_rc_write_bool_entry        (ExpidusRc       *rc,
                                               const gchar  *key,
                                               gboolean      value);
-void         expidus_rc_write_int_entry         (XfceRc       *rc,
+void         expidus_rc_write_int_entry         (ExpidusRc       *rc,
                                               const gchar  *key,
                                               gint          value);
-void         expidus_rc_write_list_entry        (XfceRc       *rc,
+void         expidus_rc_write_list_entry        (ExpidusRc       *rc,
                                               const gchar  *key,
                                               gchar       **value,
                                               const gchar  *separator);

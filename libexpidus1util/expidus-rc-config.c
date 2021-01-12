@@ -42,10 +42,10 @@ static gchar **merge_arrays (gchar **source1,
 
 
 
-struct _XfceRcConfig
+struct _ExpidusRcConfig
 {
-  XfceRc  __parent__;
-  XfceRc *save;
+  ExpidusRc  __parent__;
+  ExpidusRc *save;
   GSList *rclist;
 };
 
@@ -107,13 +107,13 @@ merge_arrays (gchar **source1,
 
 
 
-XfceRcConfig*
-_expidus_rc_config_new (XfceResourceType type,
+ExpidusRcConfig*
+_expidus_rc_config_new (ExpidusResourceType type,
                      const gchar     *resource,
                      gboolean         readonly)
 {
-  XfceRcConfig *config;
-  XfceRcSimple *simple = NULL;
+  ExpidusRcConfig *config;
+  ExpidusRcSimple *simple = NULL;
   gboolean      user_present = FALSE;
   gchar        *user;
   gchar       **paths;
@@ -128,7 +128,7 @@ _expidus_rc_config_new (XfceResourceType type,
   g_assert (user != NULL);
   g_assert (paths != NULL);
 
-  config = g_new0 (XfceRcConfig, 1);
+  config = g_new0 (ExpidusRcConfig, 1);
 
   /* system files first */
   for (p = paths; *p != NULL; ++p)
@@ -189,9 +189,9 @@ _expidus_rc_config_new (XfceResourceType type,
 
 
 void
-_expidus_rc_config_close (XfceRc *rc)
+_expidus_rc_config_close (ExpidusRc *rc)
 {
-  XfceRcConfig *config = EXPIDUS_RC_CONFIG (rc);
+  ExpidusRcConfig *config = EXPIDUS_RC_CONFIG (rc);
 
   g_slist_foreach (config->rclist, (GFunc) (void (*)(void)) expidus_rc_close, NULL);
   g_slist_free (config->rclist);
@@ -200,9 +200,9 @@ _expidus_rc_config_close (XfceRc *rc)
 
 
 void
-_expidus_rc_config_flush (XfceRc *rc)
+_expidus_rc_config_flush (ExpidusRc *rc)
 {
-  XfceRcConfig *config = EXPIDUS_RC_CONFIG (rc);
+  ExpidusRcConfig *config = EXPIDUS_RC_CONFIG (rc);
   const gchar  *filename;
   gchar        *dir;
 
@@ -226,9 +226,9 @@ _expidus_rc_config_flush (XfceRc *rc)
 
 
 void
-_expidus_rc_config_rollback (XfceRc *rc)
+_expidus_rc_config_rollback (ExpidusRc *rc)
 {
-  XfceRcConfig *config = EXPIDUS_RC_CONFIG (rc);
+  ExpidusRcConfig *config = EXPIDUS_RC_CONFIG (rc);
 
   _expidus_rc_simple_rollback (EXPIDUS_RC (config->save));
 }
@@ -236,9 +236,9 @@ _expidus_rc_config_rollback (XfceRc *rc)
 
 
 gboolean
-_expidus_rc_config_is_dirty (const XfceRc *rc)
+_expidus_rc_config_is_dirty (const ExpidusRc *rc)
 {
-  const XfceRcConfig *config = EXPIDUS_RC_CONFIG_CONST (rc);
+  const ExpidusRcConfig *config = EXPIDUS_RC_CONFIG_CONST (rc);
 
   return _expidus_rc_simple_is_dirty (EXPIDUS_RC_CONST (config->save));
 }
@@ -246,9 +246,9 @@ _expidus_rc_config_is_dirty (const XfceRc *rc)
 
 
 gboolean
-_expidus_rc_config_is_readonly (const XfceRc *rc)
+_expidus_rc_config_is_readonly (const ExpidusRc *rc)
 {
-  const XfceRcConfig *config = EXPIDUS_RC_CONFIG_CONST (rc);
+  const ExpidusRcConfig *config = EXPIDUS_RC_CONFIG_CONST (rc);
 
   return _expidus_rc_simple_is_readonly (EXPIDUS_RC_CONST (config->save));
 }
@@ -256,9 +256,9 @@ _expidus_rc_config_is_readonly (const XfceRc *rc)
 
 
 gchar**
-_expidus_rc_config_get_groups (const XfceRc *rc)
+_expidus_rc_config_get_groups (const ExpidusRc *rc)
 {
-  const XfceRcConfig *config = EXPIDUS_RC_CONFIG_CONST (rc);
+  const ExpidusRcConfig *config = EXPIDUS_RC_CONFIG_CONST (rc);
   gchar             **result = NULL;
   gchar             **tmp;
   GSList             *list;
@@ -280,10 +280,10 @@ _expidus_rc_config_get_groups (const XfceRc *rc)
 
 
 gchar**
-_expidus_rc_config_get_entries (const XfceRc *rc,
+_expidus_rc_config_get_entries (const ExpidusRc *rc,
                              const gchar  *name)
 {
-  const XfceRcConfig *config = EXPIDUS_RC_CONFIG_CONST (rc);
+  const ExpidusRcConfig *config = EXPIDUS_RC_CONFIG_CONST (rc);
   gchar             **result = NULL;
   gchar             **tmp;
   GSList             *list;
@@ -306,11 +306,11 @@ _expidus_rc_config_get_entries (const XfceRc *rc,
 
 
 void
-_expidus_rc_config_delete_group (XfceRc       *rc,
+_expidus_rc_config_delete_group (ExpidusRc       *rc,
                               const gchar  *name,
                               gboolean      global)
 {
-  XfceRcConfig *config = EXPIDUS_RC_CONFIG (rc);
+  ExpidusRcConfig *config = EXPIDUS_RC_CONFIG (rc);
 
   _expidus_rc_simple_delete_group (EXPIDUS_RC (config->save), name, global);
 }
@@ -318,9 +318,9 @@ _expidus_rc_config_delete_group (XfceRc       *rc,
 
 
 const gchar*
-_expidus_rc_config_get_group (const XfceRc *rc)
+_expidus_rc_config_get_group (const ExpidusRc *rc)
 {
-  const XfceRcConfig *config = EXPIDUS_RC_CONFIG_CONST (rc);
+  const ExpidusRcConfig *config = EXPIDUS_RC_CONFIG_CONST (rc);
 
   return _expidus_rc_simple_get_group (EXPIDUS_RC_CONST (config->save));
 }
@@ -328,10 +328,10 @@ _expidus_rc_config_get_group (const XfceRc *rc)
 
 
 gboolean
-_expidus_rc_config_has_group (const XfceRc *rc,
+_expidus_rc_config_has_group (const ExpidusRc *rc,
                            const gchar  *name)
 {
-  const XfceRcConfig *config = EXPIDUS_RC_CONFIG_CONST (rc);
+  const ExpidusRcConfig *config = EXPIDUS_RC_CONFIG_CONST (rc);
   GSList             *list;
 
   /* atleast one has to have the specified group! */
@@ -345,10 +345,10 @@ _expidus_rc_config_has_group (const XfceRc *rc,
 
 
 void
-_expidus_rc_config_set_group (XfceRc      *rc,
+_expidus_rc_config_set_group (ExpidusRc      *rc,
                            const gchar *name)
 {
-  XfceRcConfig *config = EXPIDUS_RC_CONFIG (rc);
+  ExpidusRcConfig *config = EXPIDUS_RC_CONFIG (rc);
   GSList       *list;
 
   for (list = config->rclist; list != NULL; list = list->next)
@@ -358,11 +358,11 @@ _expidus_rc_config_set_group (XfceRc      *rc,
 
 
 void
-_expidus_rc_config_delete_entry (XfceRc       *rc,
+_expidus_rc_config_delete_entry (ExpidusRc       *rc,
                               const gchar  *key,
                               gboolean      global)
 {
-  XfceRcConfig *config = EXPIDUS_RC_CONFIG (rc);
+  ExpidusRcConfig *config = EXPIDUS_RC_CONFIG (rc);
 
   _expidus_rc_simple_delete_entry (EXPIDUS_RC (config->save), key, global);
 }
@@ -370,10 +370,10 @@ _expidus_rc_config_delete_entry (XfceRc       *rc,
 
 
 gboolean
-_expidus_rc_config_has_entry (const XfceRc *rc,
+_expidus_rc_config_has_entry (const ExpidusRc *rc,
                            const gchar  *key)
 {
-  const XfceRcConfig *config = EXPIDUS_RC_CONFIG_CONST (rc);
+  const ExpidusRcConfig *config = EXPIDUS_RC_CONFIG_CONST (rc);
   GSList             *list;
 
   /* atleast one has to have the specified entry! */
@@ -387,11 +387,11 @@ _expidus_rc_config_has_entry (const XfceRc *rc,
 
 
 const gchar*
-_expidus_rc_config_read_entry (const XfceRc *rc,
+_expidus_rc_config_read_entry (const ExpidusRc *rc,
                             const gchar  *key,
                             gboolean      translated)
 {
-  XfceRcConfig *config = EXPIDUS_RC_CONFIG (rc);
+  ExpidusRcConfig *config = EXPIDUS_RC_CONFIG (rc);
   const gchar  *value;
   GSList       *list;
 
@@ -410,11 +410,11 @@ _expidus_rc_config_read_entry (const XfceRc *rc,
 
 
 void
-_expidus_rc_config_write_entry (XfceRc      *rc,
+_expidus_rc_config_write_entry (ExpidusRc      *rc,
                              const gchar *key,
                              const gchar *value)
 {
-  XfceRcConfig *config = EXPIDUS_RC_CONFIG (rc);
+  ExpidusRcConfig *config = EXPIDUS_RC_CONFIG (rc);
 
   /* XXX - don't write default values */
   if (!_expidus_rc_simple_is_readonly (EXPIDUS_RC (config->save)))

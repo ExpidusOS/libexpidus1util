@@ -21,10 +21,10 @@
 
 /**
  * SECTION: expidus-kiosk
- * @title: Xfce Kiosk functions
- * @short_description: Xfce Kiosk mode support functions.
+ * @title: Expidus Kiosk functions
+ * @short_description: Expidus Kiosk mode support functions.
  *
- * This module provides a simple Kiosk mode for Xfce.
+ * This module provides a simple Kiosk mode for Expidus.
  */
 
 #ifdef HAVE_CONFIG_H
@@ -65,16 +65,16 @@
 #define KIOSKRC (KIOSKDIR "/kioskrc")
 
 
-struct _XfceKiosk
+struct _ExpidusKiosk
 {
   GObject __parent__;
 
   gchar  *module_name;
-  XfceRc *module_rc;
+  ExpidusRc *module_rc;
 };
 
 
-static const gchar *expidus_kiosk_lookup  (const XfceKiosk *kiosk,
+static const gchar *expidus_kiosk_lookup  (const ExpidusKiosk *kiosk,
                                         const gchar     *capability);
 static gboolean     expidus_kiosk_chkgrp  (const gchar     *group);
 static time_t       mtime              (const gchar     *path);
@@ -85,14 +85,14 @@ static gchar        *usrname = NULL;
 static gchar       **groups;
 static time_t        kiosktime = 0;
 static const gchar  *kioskdef = NULL;
-static XfceRc       *kioskrc = NULL;
+static ExpidusRc       *kioskrc = NULL;
 
-G_DEFINE_TYPE (XfceKiosk, expidus_kiosk, G_TYPE_OBJECT)
+G_DEFINE_TYPE (ExpidusKiosk, expidus_kiosk, G_TYPE_OBJECT)
 G_LOCK_DEFINE_STATIC (kiosk_lock);
 
 
 static void
-expidus_kiosk_class_init (XfceKioskClass *klass)
+expidus_kiosk_class_init (ExpidusKioskClass *klass)
 {
   GObjectClass *gobject_class;
 
@@ -102,18 +102,18 @@ expidus_kiosk_class_init (XfceKioskClass *klass)
 
 /**
  * expidus_kiosk_new: (constructor)
- * @module: The Xfce project to query about
+ * @module: The Expidus project to query about
  *
- * Creates and returns a new instance of #XfceKiosk.
+ * Creates and returns a new instance of #ExpidusKiosk.
  *
- * Return value: (transfer full): a new instance of #XfceKiosk.
+ * Return value: (transfer full): a new instance of #ExpidusKiosk.
  *
  * Since: 4.2
  **/
-XfceKiosk*
+ExpidusKiosk*
 expidus_kiosk_new (const gchar *module)
 {
-  XfceKiosk *kiosk;
+  ExpidusKiosk *kiosk;
   gchar      path[1024];
 
   g_return_val_if_fail (module != NULL, NULL);
@@ -131,7 +131,7 @@ expidus_kiosk_new (const gchar *module)
 
 /**
  * expidus_kiosk_query:
- * @kiosk:      A #XfceKiosk.
+ * @kiosk:      A #ExpidusKiosk.
  * @capability: The name of the capability to check.
  *
  * Queries the @kiosk object for a given capability and returns %TRUE if
@@ -142,7 +142,7 @@ expidus_kiosk_new (const gchar *module)
  * Since: 4.2
  **/
 gboolean
-expidus_kiosk_query (const XfceKiosk *kiosk,
+expidus_kiosk_query (const ExpidusKiosk *kiosk,
                   const gchar     *capability)
 {
   const gchar *value;
@@ -201,7 +201,7 @@ expidus_kiosk_query (const XfceKiosk *kiosk,
 static void
 expidus_kiosk_finalize (GObject *object)
 {
-  XfceKiosk *kiosk = EXPIDUS_KIOSK (object);
+  ExpidusKiosk *kiosk = EXPIDUS_KIOSK (object);
 
   g_return_if_fail (kiosk != NULL);
 
@@ -213,7 +213,7 @@ expidus_kiosk_finalize (GObject *object)
 
 /**
  * expidus_kiosk_free:
- * @kiosk: A #XfceKiosk.
+ * @kiosk: A #ExpidusKiosk.
  *
  * Frees the @kiosk object.
  * In 4.13 and above, this is equivalent to calling g_clear_object.
@@ -221,7 +221,7 @@ expidus_kiosk_finalize (GObject *object)
  * Since: 4.2
  */
 void
-expidus_kiosk_free (XfceKiosk *kiosk)
+expidus_kiosk_free (ExpidusKiosk *kiosk)
 {
   /* finalize takes care of things in case the consumer calls unref
    * themselves instead of this function */
@@ -230,7 +230,7 @@ expidus_kiosk_free (XfceKiosk *kiosk)
 
 
 static const gchar*
-expidus_kiosk_lookup (const XfceKiosk *kiosk,
+expidus_kiosk_lookup (const ExpidusKiosk *kiosk,
                    const gchar     *capability)
 {
   const gchar *value;
@@ -273,7 +273,7 @@ expidus_kiosk_chkgrp (const gchar *group)
 
 
 static void
-expidus_kiosk_init (XfceKiosk *kiosk)
+expidus_kiosk_init (ExpidusKiosk *kiosk)
 {
   struct passwd *pw;
   struct group  *gr;

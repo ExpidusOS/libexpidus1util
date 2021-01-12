@@ -89,7 +89,7 @@ _res_getenv (const gchar *variable,
 
 static void
 _res_split_and_append (const gchar     *dir_list,
-                       XfceResourceType type)
+                       ExpidusResourceType type)
 {
   gchar **dirs;
   gint    n;
@@ -422,7 +422,7 @@ _res_match_path (const gchar *path,
  * Since: 4.2
  **/
 gchar**
-expidus_resource_dirs (XfceResourceType type)
+expidus_resource_dirs (ExpidusResourceType type)
 {
   gchar **paths;
   guint   size;
@@ -475,7 +475,7 @@ expidus_resource_dirs (XfceResourceType type)
  * Since: 4.2
  **/
 gchar*
-expidus_resource_lookup (XfceResourceType type,
+expidus_resource_lookup (ExpidusResourceType type,
                       const gchar     *filename)
 {
   GFileTest test;
@@ -526,7 +526,7 @@ expidus_resource_lookup (XfceResourceType type,
  * Since: 4.2
  **/
 gchar**
-expidus_resource_lookup_all (XfceResourceType type,
+expidus_resource_lookup_all (ExpidusResourceType type,
                           const gchar     *filename)
 {
   GFileTest test;
@@ -604,7 +604,7 @@ expidus_resource_lookup_all (XfceResourceType type,
  * Since: 4.2
  **/
 gchar**
-expidus_resource_match (XfceResourceType type,
+expidus_resource_match (ExpidusResourceType type,
                      const gchar     *pattern,
                      gboolean         unique)
 {
@@ -651,9 +651,9 @@ expidus_resource_match (XfceResourceType type,
  * Since: 4.2
  **/
 gchar**
-expidus_resource_match_custom (XfceResourceType type,
+expidus_resource_match_custom (ExpidusResourceType type,
                             gboolean         unique,
-                            XfceMatchFunc    func,
+                            ExpidusMatchFunc    func,
                             gpointer         user_data)
 {
   gchar **paths;
@@ -697,7 +697,7 @@ expidus_resource_match_custom (XfceResourceType type,
  * Since: 4.2
  **/
 void
-expidus_resource_push_path (XfceResourceType type,
+expidus_resource_push_path (ExpidusResourceType type,
                          const gchar     *path)
 {
   g_return_if_fail (TYPE_VALID (type));
@@ -722,7 +722,7 @@ expidus_resource_push_path (XfceResourceType type,
  * Since: 4.2
  **/
 void
-expidus_resource_pop_path (XfceResourceType type)
+expidus_resource_pop_path (ExpidusResourceType type)
 {
   GSList *l;
 
@@ -766,7 +766,7 @@ expidus_resource_pop_path (XfceResourceType type)
  * Since: 4.2
  **/
 gchar*
-expidus_resource_save_location (XfceResourceType type,
+expidus_resource_save_location (ExpidusResourceType type,
                              const gchar     *relpath,
                              gboolean         create)
 {

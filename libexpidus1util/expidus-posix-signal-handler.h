@@ -1,7 +1,5 @@
-/* $Id$ */
-/*-
- * Copyright (c) 2003-2006 Benedikt Meurer <benny@expidus.org>
- * All rights reserved.
+/*
+ * Copyright (c) 2007 Brian Tarricone <bjt23@cornell.edu>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -23,32 +21,30 @@
 #error "Only <libexpidus1util/libexpidus1util.h> can be included directly, this file may disappear or change contents"
 #endif
 
-#ifndef __EXPIDUS_LICENSE_H__
-#define __EXPIDUS_LICENSE_H__
+#ifndef __EXPIDUS_POSIX_SIGNAL_HANDLER_H__
+#define __EXPIDUS_POSIX_SIGNAL_HANDLER_H__
+
+#include <glib.h>
 
 G_BEGIN_DECLS
 
 /**
- * XfceLicenseTextType:
- * @EXPIDUS_LICENSE_TEXT_BSD  : the BSD License.
- * @EXPIDUS_LICENSE_TEXT_GPL  : the GNU General Public License.
- * @EXPIDUS_LICENSE_TEXT_LGPL : the GNU Lesser General Public License.
- *
- * The license text to return from expidus_get_license_text().
- **/
-typedef enum /*< enum >*/
-{
-  EXPIDUS_LICENSE_TEXT_BSD,
-  EXPIDUS_LICENSE_TEXT_GPL,
-  EXPIDUS_LICENSE_TEXT_LGPL,
-} XfceLicenseTextType;
+ * ExpidusPosixSignalHandler:
+ * @signal: The signal that was caught.
+ * @user_data: The @user_data parameter passed when the handler was registered.
+ */
 
-const gchar *expidus_get_license_text (XfceLicenseTextType license_type) G_GNUC_PURE;
+typedef void (*ExpidusPosixSignalHandler)(gint signal, gpointer user_data);
 
-#define EXPIDUS_LICENSE_BSD  (expidus_get_license_text (EXPIDUS_LICENSE_TEXT_BSD))
-#define EXPIDUS_LICENSE_GPL  (expidus_get_license_text (EXPIDUS_LICENSE_TEXT_GPL))
-#define EXPIDUS_LICENSE_LGPL (expidus_get_license_text (EXPIDUS_LICENSE_TEXT_LGPL))
+gboolean expidus_posix_signal_handler_init(GError **error);
+void expidus_posix_signal_handler_shutdown(void);
+
+gboolean expidus_posix_signal_handler_set_handler(gint signal,
+                                               ExpidusPosixSignalHandler handler,
+                                               gpointer user_data,
+                                               GError **error);
+void expidus_posix_signal_handler_restore_handler(gint signal);
 
 G_END_DECLS
 
-#endif /* !__EXPIDUS_LICENSE_H__ */
+#endif  /* __EXPIDUS_POSIX_SIGNAL_HANDLER_H__ */

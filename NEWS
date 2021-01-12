@@ -15,7 +15,7 @@
 
 4.15.5
 ======
-- Bump Xfce version to 4.16pre2
+- Bump Expidus version to 4.16pre2
 - Add README.md to EXTRA_DIST
 
 
@@ -46,7 +46,7 @@
 
 4.15.0
 ======
-- Bump the Xfce version to 4.15
+- Bump the Expidus version to 4.15
 - Translation Updates:
   Albanian, Galician, Spanish
 
@@ -63,7 +63,7 @@
 
 4.13.4
 ======
-- Bump the Xfce version to 4.14pre2
+- Bump the Expidus version to 4.14pre2
 - Translation Updates: Danish, Galician
 
 4.13.3
@@ -143,15 +143,15 @@
   expidus_get_license_text(...).
 - Remove unused .h files.
 - Remove expidus_strip_context(), use g_strip_context().
-- Remove XfceDesktopEntry.
+- Remove ExpidusDesktopEntry.
 - Don't generate enum types.
 - Only link against glib.
 - Set version string to 4.10.
 - Remove spec file and rpm build.
 - Missing fallback for AC_RUN_IF_ELSE() when cross-compiling (bug #8166).
-- Fix XfceRc group parsing with brackets in name (bug #8150).
-- Reduce XfceRc structure size from from 216 to 176 bytes.
-- Use some macros and drop unneeded strlen's in XfceRc.
+- Fix ExpidusRc group parsing with brackets in name (bug #8150).
+- Reduce ExpidusRc structure size from from 216 to 176 bytes.
+- Use some macros and drop unneeded strlen's in ExpidusRc.
 - Use GSList in expidus-resource.
 - Bump verinfo to 6:0:0.
 - Translation updates (ar, et, eu, is, ko, lt, nl, nn, pt, ru,
@@ -183,7 +183,7 @@
 
 4.7.4
 =====
-- Fix wrong capitalization of Xfce.
+- Fix wrong capitalization of Expidus.
 - Fix stdarg.h include (bug #6897).
 - Translation updates (pt).
 
@@ -199,7 +199,7 @@
 - Optimize expidus_rc_read_bool_entry().
 - Optimize strcmp in expidus-rc-simple.
 - Fix broken translations in applications using libexpidus1util (bug #5842).
-- Deprecate XfceDesktopEntry.
+- Deprecate ExpidusDesktopEntry.
 - Translation updates (ru, cs, lv, fi, eu, de, bn, de, uk, si, kk,
   pa, gl, zh_TW, sk, ug, fr, id, it).
 
@@ -261,9 +261,9 @@
 
 4.5.90
 ======
-- Do not use GMemChunk for XfceRc due to memory leaks (Bug #2427).
-- Fix buglet when deleting XfceRc groups.
-- Fix invalid use of g_slice_free1() in XfceRc (Bug #2854).
+- Do not use GMemChunk for ExpidusRc due to memory leaks (Bug #2427).
+- Fix buglet when deleting ExpidusRc groups.
+- Fix invalid use of g_slice_free1() in ExpidusRc (Bug #2854).
 - Add support for function names in debug messages on Solaris (Bug #3090).
 - New util functions for setting up POSIX signal handling using pipe(),
   GIOChannel and the glib main loop.

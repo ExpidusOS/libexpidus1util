@@ -110,7 +110,7 @@ static const char expidus_builtin_license_LGPL[] =
 
 /**
  * expidus_get_license_text:
- * @license_type : an #XfceLicenseTextType.
+ * @license_type : an #ExpidusLicenseTextType.
  *
  * Returns the text of the software license specified in the
  * @license_type translated to the current language. If no
@@ -120,7 +120,7 @@ static const char expidus_builtin_license_LGPL[] =
  * Return value: the license text for @license_type.
  **/
 const gchar*
-expidus_get_license_text (XfceLicenseTextType license_type)
+expidus_get_license_text (ExpidusLicenseTextType license_type)
 {
   /* make sure to initialize the i18n support */
   _expidus_i18n_init ();

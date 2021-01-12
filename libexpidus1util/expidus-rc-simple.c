@@ -61,9 +61,9 @@ typedef struct _Group  Group;
 
 
 
-static Group*   simple_add_group  (XfceRcSimple *simple,
+static Group*   simple_add_group  (ExpidusRcSimple *simple,
                                    const gchar  *name);
-static Entry*   simple_add_entry  (XfceRcSimple *simple,
+static Entry*   simple_add_entry  (ExpidusRcSimple *simple,
                                    const gchar  *key,
                                    const gchar  *value,
                                    const gchar  *locale);
@@ -75,16 +75,16 @@ static gboolean simple_parse_line (gchar        *line,
 static gchar*   simple_escape     (gchar        *buffer,
                                    gssize        size,
                                    const gchar  *string);
-static gboolean simple_write      (XfceRcSimple *simple,
+static gboolean simple_write      (ExpidusRcSimple *simple,
                                    const gchar  *filename);
 static void     simple_entry_free (Entry        *entry);
 static void     simple_group_free (Group        *group);
 
 
 
-struct _XfceRcSimple
+struct _ExpidusRcSimple
 {
-  XfceRc        __parent__;
+  ExpidusRc        __parent__;
 
   GStringChunk *string_chunk;
 
@@ -135,7 +135,7 @@ struct _Group
 
 
 static Group*
-simple_add_group (XfceRcSimple *simple,
+simple_add_group (ExpidusRcSimple *simple,
                   const gchar  *name)
 {
   Group *group;
@@ -168,7 +168,7 @@ simple_add_group (XfceRcSimple *simple,
 
 
 static Entry*
-simple_add_entry (XfceRcSimple *simple,
+simple_add_entry (ExpidusRcSimple *simple,
                   const gchar  *key,
                   const gchar  *value,
                   const gchar  *locale)
@@ -476,7 +476,7 @@ simple_escape (gchar *buffer, gssize size, const gchar *string)
 
 
 static gboolean
-simple_write (XfceRcSimple *simple, const gchar *filename)
+simple_write (ExpidusRcSimple *simple, const gchar *filename)
 {
   LEntry *lentry;
   Entry  *entry;
@@ -564,14 +564,14 @@ simple_group_free (Group *group)
 
 
 
-XfceRcSimple*
-_expidus_rc_simple_new (XfceRcSimple *shared,
+ExpidusRcSimple*
+_expidus_rc_simple_new (ExpidusRcSimple *shared,
                      const gchar  *filename,
                      gboolean      readonly)
 {
-  XfceRcSimple *simple;
+  ExpidusRcSimple *simple;
 
-  simple = g_new0 (XfceRcSimple, 1);
+  simple = g_new0 (ExpidusRcSimple, 1);
 
   _expidus_rc_init (EXPIDUS_RC (simple));
 
@@ -619,7 +619,7 @@ _expidus_rc_simple_new (XfceRcSimple *shared,
 
 
 gboolean
-_expidus_rc_simple_parse (XfceRcSimple *simple)
+_expidus_rc_simple_parse (ExpidusRcSimple *simple)
 {
   gboolean readonly;
   gchar    line[LINE_MAX];
@@ -627,7 +627,7 @@ _expidus_rc_simple_parse (XfceRcSimple *simple)
   gchar   *locale;
   gchar   *value;
   gchar   *key;
-  XfceRc  *rc;
+  ExpidusRc  *rc;
   FILE    *fp;
 
   _expidus_return_val_if_fail (simple != NULL, FALSE);
@@ -672,9 +672,9 @@ _expidus_rc_simple_parse (XfceRcSimple *simple)
 
 
 void
-_expidus_rc_simple_close (XfceRc *rc)
+_expidus_rc_simple_close (ExpidusRc *rc)
 {
-  XfceRcSimple *simple = EXPIDUS_RC_SIMPLE (rc);
+  ExpidusRcSimple *simple = EXPIDUS_RC_SIMPLE (rc);
   Group        *group_next;
   Group        *group;
 
@@ -696,9 +696,9 @@ _expidus_rc_simple_close (XfceRc *rc)
 
 
 void
-_expidus_rc_simple_flush (XfceRc *rc)
+_expidus_rc_simple_flush (ExpidusRc *rc)
 {
-  XfceRcSimple *simple = EXPIDUS_RC_SIMPLE (rc);
+  ExpidusRcSimple *simple = EXPIDUS_RC_SIMPLE (rc);
   gchar        *filename = simple->filename;
   gchar         tmp_path[PATH_MAX], buf[PATH_MAX] = {0};
 
@@ -728,9 +728,9 @@ _expidus_rc_simple_flush (XfceRc *rc)
 
 
 void
-_expidus_rc_simple_rollback (XfceRc *rc)
+_expidus_rc_simple_rollback (ExpidusRc *rc)
 {
-  XfceRcSimple *simple = EXPIDUS_RC_SIMPLE (rc);
+  ExpidusRcSimple *simple = EXPIDUS_RC_SIMPLE (rc);
 
   simple->dirty = FALSE;
 }
@@ -738,9 +738,9 @@ _expidus_rc_simple_rollback (XfceRc *rc)
 
 
 gboolean
-_expidus_rc_simple_is_dirty (const XfceRc *rc)
+_expidus_rc_simple_is_dirty (const ExpidusRc *rc)
 {
-  const XfceRcSimple *simple = EXPIDUS_RC_SIMPLE_CONST (rc);
+  const ExpidusRcSimple *simple = EXPIDUS_RC_SIMPLE_CONST (rc);
 
   return simple->dirty;
 }
@@ -748,9 +748,9 @@ _expidus_rc_simple_is_dirty (const XfceRc *rc)
 
 
 gboolean
-_expidus_rc_simple_is_readonly (const XfceRc *rc)
+_expidus_rc_simple_is_readonly (const ExpidusRc *rc)
 {
-  const XfceRcSimple *simple = EXPIDUS_RC_SIMPLE_CONST (rc);
+  const ExpidusRcSimple *simple = EXPIDUS_RC_SIMPLE_CONST (rc);
 
   return simple->readonly;
 }
@@ -758,9 +758,9 @@ _expidus_rc_simple_is_readonly (const XfceRc *rc)
 
 
 const gchar*
-_expidus_rc_simple_get_filename (const XfceRc *rc)
+_expidus_rc_simple_get_filename (const ExpidusRc *rc)
 {
-  const XfceRcSimple *simple = EXPIDUS_RC_SIMPLE_CONST (rc);
+  const ExpidusRcSimple *simple = EXPIDUS_RC_SIMPLE_CONST (rc);
 
   return simple->filename;
 }
@@ -768,9 +768,9 @@ _expidus_rc_simple_get_filename (const XfceRc *rc)
 
 
 gchar**
-_expidus_rc_simple_get_groups (const XfceRc *rc)
+_expidus_rc_simple_get_groups (const ExpidusRc *rc)
 {
-  const XfceRcSimple *simple = EXPIDUS_RC_SIMPLE_CONST (rc);
+  const ExpidusRcSimple *simple = EXPIDUS_RC_SIMPLE_CONST (rc);
   const Group        *group;
   gchar             **result;
   guint               size;
@@ -798,10 +798,10 @@ _expidus_rc_simple_get_groups (const XfceRc *rc)
 
 
 gchar**
-_expidus_rc_simple_get_entries (const XfceRc *rc,
+_expidus_rc_simple_get_entries (const ExpidusRc *rc,
                              const gchar  *name)
 {
-  const XfceRcSimple *simple = EXPIDUS_RC_SIMPLE_CONST (rc);
+  const ExpidusRcSimple *simple = EXPIDUS_RC_SIMPLE_CONST (rc);
   const Group        *group;
   const Entry        *entry;
   gchar             **result;
@@ -841,11 +841,11 @@ _expidus_rc_simple_get_entries (const XfceRc *rc,
 
 
 void
-_expidus_rc_simple_delete_group (XfceRc      *rc,
+_expidus_rc_simple_delete_group (ExpidusRc      *rc,
                               const gchar *name,
                               gboolean     global)
 {
-  XfceRcSimple *simple = EXPIDUS_RC_SIMPLE (rc);
+  ExpidusRcSimple *simple = EXPIDUS_RC_SIMPLE (rc);
   Group        *group;
   Entry        *entry;
   Entry        *next;
@@ -892,9 +892,9 @@ _expidus_rc_simple_delete_group (XfceRc      *rc,
 
 
 const gchar*
-_expidus_rc_simple_get_group (const XfceRc *rc)
+_expidus_rc_simple_get_group (const ExpidusRc *rc)
 {
-  const XfceRcSimple *simple = EXPIDUS_RC_SIMPLE_CONST (rc);
+  const ExpidusRcSimple *simple = EXPIDUS_RC_SIMPLE_CONST (rc);
 
   if (str_is_equal (simple->group->name, NULL_GROUP))
     return NULL;
@@ -905,10 +905,10 @@ _expidus_rc_simple_get_group (const XfceRc *rc)
 
 
 gboolean
-_expidus_rc_simple_has_group (const XfceRc *rc,
+_expidus_rc_simple_has_group (const ExpidusRc *rc,
                            const gchar  *name)
 {
-  const XfceRcSimple *simple = EXPIDUS_RC_SIMPLE_CONST (rc);
+  const ExpidusRcSimple *simple = EXPIDUS_RC_SIMPLE_CONST (rc);
   const Group        *group;
 
   /* the NULL group always exists */
@@ -925,10 +925,10 @@ _expidus_rc_simple_has_group (const XfceRc *rc,
 
 
 void
-_expidus_rc_simple_set_group (XfceRc      *rc,
+_expidus_rc_simple_set_group (ExpidusRc      *rc,
                            const gchar *name)
 {
-  XfceRcSimple *simple = EXPIDUS_RC_SIMPLE (rc);
+  ExpidusRcSimple *simple = EXPIDUS_RC_SIMPLE (rc);
 
   if (name == NULL)
     name = NULL_GROUP;
@@ -940,11 +940,11 @@ _expidus_rc_simple_set_group (XfceRc      *rc,
 
 
 void
-_expidus_rc_simple_delete_entry (XfceRc      *rc,
+_expidus_rc_simple_delete_entry (ExpidusRc      *rc,
                               const gchar *key,
                               gboolean     global)
 {
-  XfceRcSimple *simple = EXPIDUS_RC_SIMPLE (rc);
+  ExpidusRcSimple *simple = EXPIDUS_RC_SIMPLE (rc);
   Entry        *entry;
 
   for (entry = simple->group->efirst; entry != NULL; entry = entry->next)
@@ -973,10 +973,10 @@ _expidus_rc_simple_delete_entry (XfceRc      *rc,
 
 
 gboolean
-_expidus_rc_simple_has_entry (const XfceRc *rc,
+_expidus_rc_simple_has_entry (const ExpidusRc *rc,
                            const gchar  *key)
 {
-  const XfceRcSimple *simple = EXPIDUS_RC_SIMPLE_CONST (rc);
+  const ExpidusRcSimple *simple = EXPIDUS_RC_SIMPLE_CONST (rc);
   const Entry        *entry;
 
   for (entry = simple->group->efirst; entry != NULL; entry = entry->next)
@@ -989,11 +989,11 @@ _expidus_rc_simple_has_entry (const XfceRc *rc,
 
 
 const gchar*
-_expidus_rc_simple_read_entry (const XfceRc *rc,
+_expidus_rc_simple_read_entry (const ExpidusRc *rc,
                             const gchar  *key,
                             gboolean      translated)
 {
-  const XfceRcSimple *simple = EXPIDUS_RC_SIMPLE_CONST (rc);
+  const ExpidusRcSimple *simple = EXPIDUS_RC_SIMPLE_CONST (rc);
   LEntry             *lentry;
   Entry              *entry;
   const gchar        *best_value;
@@ -1042,11 +1042,11 @@ _expidus_rc_simple_read_entry (const XfceRc *rc,
 
 
 void
-_expidus_rc_simple_write_entry (XfceRc      *rc,
+_expidus_rc_simple_write_entry (ExpidusRc      *rc,
                              const gchar *key,
                              const gchar *value)
 {
-  XfceRcSimple *simple = EXPIDUS_RC_SIMPLE (rc);
+  ExpidusRcSimple *simple = EXPIDUS_RC_SIMPLE (rc);
   Entry        *result;
 
   result = simple_add_entry (simple, key, value, NULL);
