@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                      "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+]>
+
+<book id="index">
+    <bookinfo>
+        <title>libexpidus1util Reference Manual</title>
+        <releaseinfo>for libexpidus1util <xi:include href="version.xml" parse="text"/></releaseinfo>
+    </bookinfo>
+
+    <chapter id="reference">
+        <title>libexpidus1util Overview</title>
+        <para>
+            libexpidus1util is a general-purpose utility library
+            with core application support for the Xfce Desktop
+            Environment.
+        </para>
+    </chapter>
+
+    <chapter id="libexpidus1util-fundamentals">
+        <title>Xfce Fundamentals</title>
+        <xi:include href="xml/libexpidus1util-config.xml"/>
+        <xi:include href="xml/expidus-i18n.xml"/>
+        <xi:include href="xml/expidus-license.xml"/>
+    </chapter>
+
+    <chapter id="libexpidus1util-core">
+        <title>Xfce Core Application support</title>
+        <xi:include href="xml/expidus-kiosk.xml"/>
+        <xi:include href="xml/expidus-posix-signal-handler.xml"/>
+    </chapter>
+
+    <chapter id="libexpidus1util-utilities">
+        <title>Xfce Utilities</title>
+        <xi:include href="xml/expidus-resource.xml"/>
+        <xi:include href="xml/expidus-rc.xml"/>
+        <xi:include href="xml/expidus-fileutils.xml"/>
+        <xi:include href="xml/expidus-miscutils.xml"/>
+        <xi:include href="xml/expidus-utf8.xml"/>
+    </chapter>
+
+    <chapter id="libexpidus1util-datatypes">
+        <title>Xfce Data types</title>
+        <xi:include href="xml/expidus-generics.xml"/>
+    </chapter>
+    <xi:include href="xml/annotation-glossary.xml"><xi:fallback /></xi:include>
+</book>

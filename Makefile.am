@@ -3,10 +3,10 @@
 ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
 
 SUBDIRS =								\
-	libxfce4util							\
+	libexpidus1util							\
 	docs								\
 	po								\
-	xfce4-kiosk-query
+	expidus1-kiosk-query
 
 distclean-local:
 	rm -rf *.cache *~

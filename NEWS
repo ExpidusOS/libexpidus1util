@@ -53,7 +53,7 @@
 4.14.0
 ======
 
-- Bump the xfce version to 4.14
+- Bump the expidus version to 4.14
 
 4.13.5
 ======
@@ -110,7 +110,7 @@
 
 4.12.1
 ======
-- Set xfce_version_string to 4.12 (oops!).
+- Set expidus_version_string to 4.12 (oops!).
 
 4.12.0
 ======
@@ -121,8 +121,8 @@
 ======
 - Autotools updates.
 - Don't use freed rc file to avoid crash (bug #9026).
-- Remove unused or unrequired API functions: xfce_strjoin,
-  xfce_gethostname, xfce_putenv, xfce_setenv, xfce_unsetenv.
+- Remove unused or unrequired API functions: expidus_strjoin,
+  expidus_gethostname, expidus_putenv, expidus_setenv, expidus_unsetenv.
 - Translation updates: Arabic, Bulgarian, Welsh, Dzongkha, English
   (Australia), Georgian, Korean, Macedonian, Malay, Dutch (Flemish),
   Occitan (post 1500), Slovenian, Serbian, Thai, Tagalog (Philippines),
@@ -140,9 +140,9 @@
 4.9.0
 =====
 - Make licenses static. You can only use
-  xfce_get_license_text(...).
+  expidus_get_license_text(...).
 - Remove unused .h files.
-- Remove xfce_strip_context(), use g_strip_context().
+- Remove expidus_strip_context(), use g_strip_context().
 - Remove XfceDesktopEntry.
 - Don't generate enum types.
 - Only link against glib.
@@ -152,7 +152,7 @@
 - Fix XfceRc group parsing with brackets in name (bug #8150).
 - Reduce XfceRc structure size from from 216 to 176 bytes.
 - Use some macros and drop unneeded strlen's in XfceRc.
-- Use GSList in xfce-resource.
+- Use GSList in expidus-resource.
 - Bump verinfo to 6:0:0.
 - Translation updates (ar, et, eu, is, ko, lt, nl, nn, pt, ru,
   sk, zh_CN, zh_TW).
@@ -160,17 +160,17 @@
 4.8.2
 =====
 - Change the version string to 4.8.
-- Fixed incorrect assertion in xfce_strjoin (bug #7122).
+- Fixed incorrect assertion in expidus_strjoin (bug #7122).
 - Fix "empty declaration" compiler warnings.
 - Update FSF address and add missing licenses.
-- Fix undef in libxfce4util.h header.
+- Fix undef in libexpidus1util.h header.
 - Remove the internal slice allocator macros.
 - Use chain to free slice instead of a loop.
 - Translation updates (ko, ru, sk, zh_CN, nl).
 
 4.8.1
 =====
-- Set xfce_version_string to 4.8.0.
+- Set expidus_version_string to 4.8.0.
 
 4.8.0
 =====
@@ -190,15 +190,15 @@
 4.7.3
 =====
 - Explicitly link to gobject for the gtkdocs.
-- Expand tilde in more situations in xfce_expand_variables().
+- Expand tilde in more situations in expidus_expand_variables().
 - Remove encoding key from comment.
 - Translation updates (he, kk, de, zh_TW, el, gl, pt).
 
 4.7.2
 =====
-- Optimize xfce_rc_read_bool_entry().
-- Optimize strcmp in xfce-rc-simple.
-- Fix broken translations in applications using libxfce4util (bug #5842).
+- Optimize expidus_rc_read_bool_entry().
+- Optimize strcmp in expidus-rc-simple.
+- Fix broken translations in applications using libexpidus1util (bug #5842).
 - Deprecate XfceDesktopEntry.
 - Translation updates (ru, cs, lv, fi, eu, de, bn, de, uk, si, kk,
   pa, gl, zh_TW, sk, ug, fr, id, it).
@@ -213,7 +213,7 @@
 - Build ChangeLog during make dist.
 - Silent the build.
 - Fix some compiler warnings.
-- Use new xdt macros, xfce-dev-tools 4.7.2 is required.
+- Use new xdt macros, expidus-dev-tools 4.7.2 is required.
 - Various build changes for GIT.
 - Misc other small changes.
 - Translation updates (ca, zh_CN, es, da, gl, pa, ru, sq, lv, sk,
@@ -297,7 +297,7 @@
 
 4.1.6
 =====
-- Added LIBXFCE4UTIL_*_VERSION macros.
+- Added LIBEXPIDUS1UTIL_*_VERSION macros.
 
 
 4.1.5
@@ -312,7 +312,7 @@
 =====
 - Several bugfixes
 - Added --with-broken-putenv=[auto/no/yes] to configure to make
-  libxfce4util cross-compilable again.
+  libexpidus1util cross-compilable again.
 
 
 4.1.3
@@ -325,11 +325,11 @@
 
 4.1.1
 =====
-- added xfce_setenv(), xfce_putenv()
+- added expidus_setenv(), expidus_putenv()
 - Started doxygen documentation of the code
 
 
 4.1.0
 =====
-- Added xfce_textdomain(package, localedir, encoding) to avoid
+- Added expidus_textdomain(package, localedir, encoding) to avoid
   problems with gettext binding in the future.

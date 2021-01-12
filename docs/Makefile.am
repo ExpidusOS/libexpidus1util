@@ -5,16 +5,16 @@
 AUTOMAKE_OPTIONS = 1.8
 
 # The name of the module.
-DOC_MODULE=libxfce4util
+DOC_MODULE=libexpidus1util
 
 # The top-level SGML file.
-DOC_MAIN_SGML_FILE=libxfce4util-docs.xml
+DOC_MAIN_SGML_FILE=libexpidus1util-docs.xml
 
 # Extra options to supply to gtkdoc-scan
-SCAN_OPTIONS=--deprecated-guards="XFCE_DISABLE_DEPRECATED"
+SCAN_OPTIONS=--deprecated-guards="EXPIDUS_DISABLE_DEPRECATED"
 
 # The directory containing the source code. Relative to $(srcdir)
-DOC_SOURCE_DIR=../libxfce4util
+DOC_SOURCE_DIR=../libexpidus1util
 
 # Extra options to supply to gtkdoc-mkdb
 MKDB_OPTIONS=--sgml-mode --output-format=xml
@@ -23,8 +23,8 @@ MKDB_OPTIONS=--sgml-mode --output-format=xml
 FIXXREF_OPTIONS=
 
 # Used for dependencies
-HFILE_GLOB=$(top_srcdir)/libxfce4util/*.h
-CFILE_GLOB=$(top_srcdir)/libxfce4util/*.c
+HFILE_GLOB=$(top_srcdir)/libexpidus1util/*.h
+CFILE_GLOB=$(top_srcdir)/libexpidus1util/*.c
 
 # Header files to ignore when scanning
 IGNORE_HFILES=

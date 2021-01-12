@@ -5,7 +5,7 @@
 # Copyright (c) 2002-2006
 #         The Xfce development team. All rights reserved.
 #
-# Written for Xfce by Benedikt Meurer <benny@xfce.org>.
+# Written for Xfce by Benedikt Meurer <benny@expidus.org>.
 #
 # This library is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the Free
@@ -27,8 +27,8 @@
   cat >&2 <<EOF
 autogen.sh: You don't seem to have the Xfce development tools installed on
             your system, which are required to build this software.
-            Please install the xfce4-dev-tools package first, it is available
-            from http://www.xfce.org/.
+            Please install the expidus1-dev-tools package first, it is available
+            from http://www.expidus.org/.
 EOF
   exit 1
 }

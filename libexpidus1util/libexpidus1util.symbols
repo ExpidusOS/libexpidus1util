@@ -1,0 +1,163 @@
+/* $Id$ */
+/*-
+ * Copyright (c) 2005-2006 Benedikt Meurer <benny@expidus.org>.
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Library General Public
+ * License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Library General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301 USA
+ */
+
+/* This file lists all exported symbols. It is used to generate
+ * the gobject.def file used to control exports on Windows and the
+ * libexpidus1util-alias.h/libexpidus1util-aliasdef.c files used to
+ * avoid PLT entries for internal uses of exported functions (see
+ * make-libexpidus1util-alias.pl).
+ * 
+ * Every symbol must be included in the right
+ * #ifdef IN_HEADER(sym) #endif and
+ * #ifdef IN_SOURCE(sym) #endif sections. 
+ */
+
+#ifdef ALL_FILES
+#define IN_HEADER(x) 1
+#define IN_SOURCE(x) 1
+#endif
+
+/* libexpidus1util-config variables */
+#if IN_HEADER(__LIBEXPIDUS1UTIL_CONFIG_H__)
+#if IN_SOURCE(__LIBEXPIDUS1UTIL_CONFIG_C__)
+#ifdef INCLUDE_VARIABLES
+libexpidus1util_major_version
+libexpidus1util_minor_version
+libexpidus1util_micro_version
+#endif
+#endif
+#endif
+
+/* expidus-fileutils functions */
+#if IN_HEADER(__EXPIDUS_FILEUTILS_H__)
+#if IN_SOURCE(__EXPIDUS_FILEUTILS_C__)
+expidus_mkdirhier
+#endif
+#endif
+
+/* expidus-i18n functions */
+#if IN_HEADER(__EXPIDUS_I18N_H__)
+#if IN_SOURCE(__EXPIDUS_I18N_C__)
+expidus_textdomain
+expidus_get_file_localized G_GNUC_MALLOC
+expidus_get_file_localized_r
+expidus_get_dir_localized G_GNUC_MALLOC
+expidus_get_dir_localized_r
+expidus_get_path_localized
+expidus_locale_match
+#endif
+#endif
+
+/* expidus-kiosk functions */
+#if IN_HEADER(__EXPIDUS_KIOSK_H__)
+#if IN_SOURCE(__EXPIDUS_KIOSK_C__)
+expidus_kiosk_new G_GNUC_MALLOC
+expidus_kiosk_query
+expidus_kiosk_get_type
+expidus_kiosk_free
+#endif
+#endif
+
+/* expidus-license variables/functions */
+#if IN_HEADER(__EXPIDUS_LICENSE_H__)
+#if IN_SOURCE(__EXPIDUS_LICENSE_C__)
+expidus_get_license_text G_GNUC_PURE
+#endif
+#endif
+
+/* expidus-miscutils functions */
+#if IN_HEADER(__EXPIDUS_MISCUTILS_H__)
+#if IN_SOURCE(__EXPIDUS_MISCUTILS_C__)
+expidus_version_string G_GNUC_PURE
+expidus_get_homedir G_GNUC_PURE
+expidus_get_homefile_r
+expidus_get_userdir G_GNUC_PURE
+expidus_get_userfile_r
+expidus_gethostname G_GNUC_MALLOC
+expidus_expand_variables G_GNUC_MALLOC
+expidus_append_quoted
+expidus_expand_desktop_entry_field_codes G_GNUC_MALLOC
+#endif
+#endif
+
+/* expidus-posix-signal-handler functions */
+#if IN_HEADER(__EXPIDUS_POSIX_SIGNAL_HANDLER_H__)
+#if IN_SOURCE(__EXPIDUS_POSIX_SIGNAL_HANDLER_C__)
+expidus_posix_signal_handler_init
+expidus_posix_signal_handler_shutdown
+expidus_posix_signal_handler_set_handler
+expidus_posix_signal_handler_restore_handler
+#endif
+#endif
+
+/* expidus-resource functions */
+#if IN_HEADER(__EXPIDUS_RESOURCE_H__)
+#if IN_SOURCE(__EXPIDUS_RESOURCE_C__)
+expidus_resource_dirs G_GNUC_MALLOC
+expidus_resource_lookup G_GNUC_MALLOC
+expidus_resource_lookup_all G_GNUC_MALLOC
+expidus_resource_match G_GNUC_MALLOC
+expidus_resource_match_custom G_GNUC_MALLOC
+expidus_resource_push_path
+expidus_resource_pop_path
+expidus_resource_save_location G_GNUC_MALLOC
+#endif
+#endif
+
+/* expidus-rc functions */
+#if IN_HEADER(__EXPIDUS_RC_H__)
+#if IN_SOURCE(__EXPIDUS_RC_C__)
+expidus_rc_get_type
+expidus_rc_simple_open G_GNUC_MALLOC
+expidus_rc_config_open G_GNUC_MALLOC
+expidus_rc_close
+expidus_rc_flush
+expidus_rc_rollback
+expidus_rc_is_dirty
+expidus_rc_is_readonly
+expidus_rc_get_locale
+expidus_rc_get_groups
+expidus_rc_get_entries
+expidus_rc_delete_group
+expidus_rc_get_group
+expidus_rc_has_group
+expidus_rc_set_group
+expidus_rc_delete_entry
+expidus_rc_has_entry
+expidus_rc_read_entry
+expidus_rc_read_entry_untranslated
+expidus_rc_read_bool_entry
+expidus_rc_read_int_entry
+expidus_rc_read_list_entry G_GNUC_MALLOC
+expidus_rc_write_entry
+expidus_rc_write_bool_entry
+expidus_rc_write_int_entry
+expidus_rc_write_list_entry
+#endif
+#endif
+
+/* expidus-utf8 functions */
+#if IN_HEADER(__EXPIDUS_UTF8_H__)
+#if IN_SOURCE(__EXPIDUS_UTF8_C__)
+expidus_utf8_remove_controls
+expidus_utf8_strndup G_GNUC_MALLOC
+#endif
+#endif
+
