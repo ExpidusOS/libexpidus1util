@@ -78,7 +78,7 @@
  * the users .expidus1 directory. If not set, the expidus_userdir defaults
  * to "$HOME/.expidus1".
  */
-#define XFCE4HOME_ENVVAR "XFCE4HOME"
+#define EXPIDUS4HOME_ENVVAR "EXPIDUS4HOME"
 
 G_LOCK_DEFINE_STATIC(_lock);
 
@@ -112,7 +112,7 @@ internal_initialize(void)
     }
 
   /* get path to users .expidus1 directory */
-  dir = g_getenv (XFCE4HOME_ENVVAR);
+  dir = g_getenv (EXPIDUS4HOME_ENVVAR);
   if (dir != NULL)
     {
       expidus_userdir = g_strdup (dir);
@@ -231,7 +231,7 @@ expidus_get_homefile_r (gchar *buffer, size_t len, const gchar *format, ...)
  *
  * Safe way to retrieve the path to the user's ".expidus1" directory. The path
  * to the current user's ".expidus1" directory is either taken from the
- * environment variable XFCE4HOME if defined, or if unset, is gained by
+ * environment variable EXPIDUS4HOME if defined, or if unset, is gained by
  * concatenating the path to the user's home directory and the ".expidus1".
  * That says, it will, by default, return the path "$HOME/.expidus1", where
  * $HOME is replaced with the absolute path to the user's home directory.

@@ -1384,7 +1384,7 @@ Example paths:
            filename="expidus-miscutils.c"
            line="229">Safe way to retrieve the path to the user's ".expidus1" directory. The path
 to the current user's ".expidus1" directory is either taken from the
-environment variable XFCE4HOME if defined, or if unset, is gained by
+environment variable EXPIDUS4HOME if defined, or if unset, is gained by
 concatenating the path to the user's home directory and the ".expidus1".
 That says, it will, by default, return the path "$HOME/.expidus1", where
 $HOME is replaced with the absolute path to the user's home directory.
