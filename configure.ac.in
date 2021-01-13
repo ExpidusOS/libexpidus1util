@@ -22,7 +22,7 @@ m4_define([libexpidus1util_version], [libexpidus1util_version_major().libexpidus
 dnl **************************************************************
 dnl *** Overall Expidus version, modify this when making releases ***
 dnl **************************************************************
-m4_define([expidus_version_string], [4.16])
+m4_define([expidus_version_string], [1.0])
 
 
 dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
@@ -38,8 +38,8 @@ dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
 AC_COPYRIGHT([Copyright (c) 2002-2019
-        The Expidus development team. All rights reserved.])
-AC_INIT([libexpidus1util], [libexpidus1util_version], [expidus1-dev@expidus.org])
+        The ExpidusOS and XFCE development team. All rights reserved.])
+AC_INIT([libexpidus1util], [libexpidus1util_version], [rosscomputerguy@protonmail.com])
 AC_PREREQ([2.69])
 AC_REVISION([libexpidus1util_version_build])
 
